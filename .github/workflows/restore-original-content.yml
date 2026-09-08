@@ -1,0 +1,52 @@
+name: Verify original lesson data
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/restore-original-content.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: restore-original-lesson-data
+  cancel-in-progress: false
+jobs:
+  verify-and-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Restore and verify original UTF-8 data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, os, urllib.request
+          repo = os.environ['GITHUB_REPOSITORY']
+          if repo != 'Amitfree-git/FamilyReadingRoom':
+              raise SystemExit('Unexpected repository; no changes made')
+          endpoint = 'https://api.github.com/repos/' + repo + '/contents/docs/content.js'
+          headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'User-Agent': 'FamilyReadingRoom-content-check', 'X-GitHub-Api-Version': '2022-11-28'}
+          def request(url, method='GET', payload=None):
+              data = None if payload is None else json.dumps(payload).encode('utf-8')
+              req = urllib.request.Request(url, data=data, headers=headers, method=method)
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  return json.load(response)
+          current = request(endpoint + '?ref=main')
+          original_sha = 'e60f4a7b69044eff29f2fce8d6ecb8a3f4d8b1c9'
+          allowed = {original_sha, '65d001a003514163630bd8f7f8673da316194b34', 'e414eb87f0c93d6298ba9e66af3fbd1e5cf70021'}
+          if current['sha'] not in allowed:
+              raise SystemExit('Content changed since review; refusing to overwrite')
+          raw = base64.b64decode(current['content'])
+          text = raw.decode('utf-8')
+          text = text.replace('\u4ece\u201c\u6055\u300d\u5f00\u59cb', '\u4ece\u201c\u6055\u201d\u5f00\u59cb')
+          text = text.replace('\u53f8\u9a6c\u8fc1\u8fc1\u5f15\u7528', '\u53f8\u9a6c\u8fc1\u5f15\u7528')
+          restored = text.encode('utf-8')
+          actual = hashlib.sha1(b'blob ' + str(len(restored)).encode() + b'\0' + restored).hexdigest()
+          if actual != original_sha:
+              raise SystemExit('Original-content checksum mismatch; no changes made')
+          if raw != restored:
+              result = request(endpoint, 'PUT', {'message': 'fix: restore exact original lesson text after checksum verification', 'content': base64.b64encode(restored).decode('ascii'), 'sha': current['sha'], 'branch': 'main'})
+              print('Restored original lesson data. Commit:', result['commit']['sha'])
+          else:
+              print('Lesson data already matches the original.')
+          print('Verified original blob SHA:', original_sha)
+          PY
