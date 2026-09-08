@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.env
+.env.*
+!.env.example
+/backups/
+/tests/output/
+/tests/ui-output/
+共读山房_全家备份_*.json
