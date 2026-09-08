@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="共读山房：每天一句中国经典，用白话、故事和小练习，让一家人一起学习。离线可用，无需注册。">
+<meta name="theme-color" content="#24463e"><title>共读山房 · 家人的经典小书房</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a95840'/%3E%3Ctext x='32' y='44' text-anchor='middle' fill='%23fff6e8' font-size='38' font-family='serif'%3E读%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<aside class="sidebar" aria-label="主导航">
+  <a class="brand" href="#/today"><span class="brand-seal" aria-hidden="true">共<br>读</span><span><b>共读山房</b><small>家人的经典小书房</small></span></a>
+  <div class="side-label">慢慢读，一起长大</div>
+  <nav id="nav"></nav>
+  <div class="side-bookmark"><span class="bookmark-line"></span><p>每日一句<br>让古人的智慧<br>照进今天的生活。</p><span class="vertical-note">一 日 一 经 典</span></div>
+  <div class="side-bottom"><div class="side-progress"><span>我们的共读积累</span><b id="side-count">0 / 30</b></div><div class="progress-track"><i id="side-progress-bar"></i></div><small>不必赶路，读懂一句就很好。</small><button class="side-help" data-action="about">关于这间小书房 <span>↗</span></button></div>
+</aside>
+<div class="shell">
+<header class="topbar"><div class="topbar-left"><span class="mobile-brand">共读山房</span><span id="breadcrumb">每日共读</span><span class="topbar-divider"></span><span class="subtle">一句经典，一段相伴</span></div><div class="topbar-actions"><button class="icon-button" data-action="font" aria-label="切换阅读字号" title="切换字号">Aa</button><button class="icon-button" data-action="settings" aria-label="设置" title="阅读设置" id="settings-button"></button><button class="member-button" data-action="members"><span class="avatar" id="member-avatar">家</span><span id="member-name">全家共读</span><span class="chevron">⌄</span></button></div></header>
+<div id="storage-warning" class="notice error" role="status" hidden></div>
+<main id="main" tabindex="-1"></main>
+<footer class="site-footer"><span>共读山房 · 每天留一点时间，和家人读书。</span><button data-action="about">内容与隐私说明</button></footer>
+</div>
+<nav id="mobile-nav" class="mobile-nav" aria-label="移动端导航"></nav>
+<dialog id="modal" aria-labelledby="modal-title"></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<input id="import-file" type="file" accept="application/json,.json" hidden>
+<noscript><div class="noscript">这个网站需要启用浏览器的 JavaScript 才能显示课程。网站不需要登录，也不需要联网加载课程。</div></noscript>
+<script src="content.js"></script><script src="app.js"></script>
+</body></html>
