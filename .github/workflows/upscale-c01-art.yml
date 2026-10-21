@@ -1,0 +1,84 @@
+name: Fix first-lesson illustration resolution
+on:
+  push:
+    paths:
+      - .github/workflows/upscale-c01-art.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upscale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image processing libraries
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "Pillow>=11,<13" pillow-avif-plugin opencv-contrib-python-headless
+      - name: Download small open-source 4x super-resolution model
+        run: |
+          curl -fLsS --retry 3 -o /tmp/FSRCNN_x4.pb \
+            https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflow/master/models/FSRCNN_x4.pb
+          test "$(wc -c </tmp/FSRCNN_x4.pb)" -gt 30000
+      - name: Export native 4x WebP art from original AVIF atlas
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageFilter
+          import pillow_avif  # registers AVIF decoder
+          import cv2
+          import numpy as np
+          src=Path('docs/art/c01-comic.avif')
+          image=Image.open(src).convert('RGB')
+          assert image.size==(480,379), f'Unexpected source layout: {image.size}'
+          sr=cv2.dnn_superres.DnnSuperResImpl_create()
+          sr.readModel('/tmp/FSRCNN_x4.pb')
+          sr.setModel('fsrcnn',4)
+          pieces={'hero':(0,0,480,167),'panel-1':(0,167,240,273),
+                  'panel-2':(240,167,480,273),'panel-3':(0,273,240,379),
+                  'panel-4':(240,273,480,379)}
+          for name,coords in pieces.items():
+              crop=image.crop(coords)
+              out=sr.upsample(cv2.cvtColor(np.array(crop),cv2.COLOR_RGB2BGR))
+              full=Image.fromarray(cv2.cvtColor(out,cv2.COLOR_BGR2RGB))
+              full=full.filter(ImageFilter.UnsharpMask(radius=1.1,percent=65,threshold=3))
+              destination=Path(f'docs/art/c01-{name}-sharp.webp')
+              full.save(destination,'WEBP',quality=91,method=6)
+              assert full.width>=960 and full.height>=424 if name!='hero' else full.width>=1920
+              print(destination, full.size, destination.stat().st_size)
+          PY
+      - name: Point site at independent sharp images
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          p=Path('docs/styles.css')
+          s=p.read_text('utf-8')
+          anchor='/* HIGH-RES FIRST-LESSON ART: independent 4x super-resolution source files */'
+          s=s.split(anchor)[0].rstrip() + '\n\n' + anchor + '''
+          .painting-hero{background-image:url("art/c01-hero-sharp.webp?v=3");background-size:cover;background-position:center}
+          .painted-gallery .painting-panel{background-position:center;background-size:cover}
+          .painted-gallery .panel-1{background-image:url("art/c01-panel-1-sharp.webp?v=3")}
+          .painted-gallery .panel-2{background-image:url("art/c01-panel-2-sharp.webp?v=3")}
+          .painted-gallery .panel-3{background-image:url("art/c01-panel-3-sharp.webp?v=3")}
+          .painted-gallery .panel-4{background-image:url("art/c01-panel-4-sharp.webp?v=3")}
+          '''.strip()+'\n'
+          p.write_text(s,'utf-8')
+          PY
+      - name: Commit generated artwork to Pages source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/art/c01-*-sharp.webp docs/styles.css
+          if git diff --cached --quiet; then
+            echo "No image updates"
+          else
+            git commit -m "art: replace tiny atlas rendering with independently upscaled lesson illustrations"
+            git push origin HEAD:main
+          fi
