@@ -12,3 +12,6 @@
 .focus-line{color:#365c4a;font:14px/1.8 var(--serif);margin:6px 0 14px;max-width:92%;padding:9px 12px;border-left:3px solid #8caa8d;background:#ffffff78}
 .focus-line strong{font-weight:600}
 @media(max-width:700px){.hero-quote.passage{font-size:18px;line-height:1.85;max-width:100%;letter-spacing:.01em}.focus-line{max-width:100%}}
+
+/* 在白话导读与原有重点句解释之间保留换段 */
+.plain-text{white-space:pre-line}
