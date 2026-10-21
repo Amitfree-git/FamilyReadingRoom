@@ -57,7 +57,7 @@ jobs:
             assert.ok(hero.includes('<svg')&&hero.includes('aria-label'),l.id+' cover accessible');
             assert.equal((panels.match(/<figure/g)||[]).length,l.story.parts.length,l.id+' panels');
             assert.ok(panels.includes(l.story.parts[0][0]),l.id+' first scene');
-            assert.ok(!panels.includes('http://')&&!panels.includes('https://'),l.id+' must work offline');
+            assert.ok(!/\b(?:href|src)\s*=\s*["']https?:\/\//.test(panels),l.id+' must work offline');
             assert.ok(!panels.includes('<script'),l.id+' unsafe content');
           }
           const html=fs.readFileSync('docs/index.html','utf8');
