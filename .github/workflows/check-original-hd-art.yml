@@ -1,0 +1,18 @@
+name: Check original HD illustration assets
+on:
+  pull_request:
+    paths:
+      - 'art-direction/**'
+      - 'docs/art/hd/**'
+      - 'scripts/check_original_art.py'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install 'Pillow>=11,<13'
+      - run: python scripts/check_original_art.py
