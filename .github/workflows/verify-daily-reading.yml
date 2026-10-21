@@ -15,6 +15,7 @@ jobs:
         run: |
           node --check docs/app.js
           node --check docs/content.js
+          node --check docs/illustrations.js
       - name: Validate 30 contextual lessons and source references
         run: |
           node <<'NODE'
@@ -38,4 +39,31 @@ jobs:
           const html=fs.readFileSync('docs/index.html','utf8');
           assert.ok(html.includes('每日一段'));
           console.log('Validated',data.lessons.length,'daily passages');
+          NODE
+      - name: Check illustrated lessons and fallback accessibility
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const context={window:{}};
+          vm.runInNewContext(fs.readFileSync('docs/content.js','utf8'),context);
+          vm.runInNewContext(fs.readFileSync('docs/illustrations.js','utf8'),context);
+          const illustrations=context.window.ClassicIllustrations,lessons=context.window.CLASSICS_DATA.lessons;
+          assert.equal(Object.keys(illustrations.episodes).length,30);
+          assert.equal(lessons.length,30);
+          for(const l of lessons){
+            assert.equal(illustrations.episodes[l.id].length,l.story.parts.length,l.id+' scene count');
+            const hero=illustrations.cover(l);
+            const panels=illustrations.artStrip(l);
+            assert.ok(hero.includes('<svg')&&hero.includes('aria-label'),l.id+' cover accessible');
+            assert.equal((panels.match(/<figure/g)||[]).length,l.story.parts.length,l.id+' panels');
+            assert.ok(panels.includes(l.story.parts[0][0]),l.id+' first scene');
+            assert.ok(!panels.includes('http://')&&!panels.includes('https://'),l.id+' must work offline');
+            assert.ok(!panels.includes('<script'),l.id+' unsafe content');
+          }
+          const html=fs.readFileSync('docs/index.html','utf8');
+          const app=fs.readFileSync('docs/app.js','utf8');
+          assert.ok(html.indexOf('src="illustrations.js"')<html.indexOf('src="app.js"'));
+          assert.ok(app.includes('ClassicIllustrations.cover'));
+          assert.ok(app.includes('ClassicIllustrations.artStrip'));
+          console.log('Checked watercolor cover and comic scenes for all',lessons.length,'lessons');
           NODE
