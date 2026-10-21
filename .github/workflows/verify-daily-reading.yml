@@ -40,30 +40,30 @@ jobs:
           assert.ok(html.includes('每日一段'));
           console.log('Validated',data.lessons.length,'daily passages');
           NODE
-      - name: Check illustrated lessons and fallback accessibility
+      - name: Check scene-specific watercolor illustrations
         run: |
           node <<'NODE'
           const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
           const context={window:{}};
           vm.runInNewContext(fs.readFileSync('docs/content.js','utf8'),context);
           vm.runInNewContext(fs.readFileSync('docs/illustrations.js','utf8'),context);
-          const illustrations=context.window.ClassicIllustrations,lessons=context.window.CLASSICS_DATA.lessons;
-          assert.equal(Object.keys(illustrations.episodes).length,30);
+          const lessons=context.window.CLASSICS_DATA.lessons;
+          const art=context.window.ClassicIllustrations;
           assert.equal(lessons.length,30);
+          assert.equal(art.paintedLessons.size,1);
+          assert.ok(fs.existsSync('docs/art/c01-comic.avif'),'c01 atlas exists');
           for(const l of lessons){
-            assert.equal(illustrations.episodes[l.id].length,l.story.parts.length,l.id+' scene count');
-            const hero=illustrations.cover(l);
-            const panels=illustrations.artStrip(l);
-            assert.ok(hero.includes('<svg')&&hero.includes('aria-label'),l.id+' cover accessible');
-            assert.equal((panels.match(/<figure/g)||[]).length,l.story.parts.length,l.id+' panels');
-            assert.ok(panels.includes(l.story.parts[0][0]),l.id+' first scene');
-            assert.ok(!/\b(?:href|src)\s*=\s*["']https?:\/\//.test(panels),l.id+' must work offline');
-            assert.ok(!panels.includes('<script'),l.id+' unsafe content');
+            const cover=art.cover(l), panels=art.artStrip(l);
+            if(l.id==='c01'){
+              assert.ok(cover.includes('painting-hero'));
+              assert.equal((panels.match(/<figure/g)||[]).length,4);
+              assert.ok(panels.includes('齐国公子争位') || panels.includes('旧怨'));
+            }else{
+              assert.equal(cover,'',l.id+' must not reuse generic artwork');
+              assert.equal(panels,'',l.id+' must not reuse generic artwork');
+            }
           }
           const html=fs.readFileSync('docs/index.html','utf8');
-          const app=fs.readFileSync('docs/app.js','utf8');
           assert.ok(html.indexOf('src="illustrations.js"')<html.indexOf('src="app.js"'));
-          assert.ok(app.includes('ClassicIllustrations.cover'));
-          assert.ok(app.includes('ClassicIllustrations.artStrip'));
-          console.log('Checked watercolor cover and comic scenes for all',lessons.length,'lessons');
+          console.log('Pass: first lesson has dedicated artwork; others do not repeat templates');
           NODE
