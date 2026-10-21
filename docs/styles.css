@@ -52,3 +52,10 @@
 @media(min-width:1190px){.painted-gallery .illustration-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:600px){.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.painting-disclaimer{font-size:9px}}
 @media(max-width:390px){.painted-gallery .illustration-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* HIGH-RES FIRST-LESSON ART: independent 4x super-resolution source files */.painting-hero{background-image:url("art/c01-hero-sharp.webp?v=3");background-size:cover;background-position:center}
+.painted-gallery .painting-panel{background-position:center;background-size:cover}
+.painted-gallery .panel-1{background-image:url("art/c01-panel-1-sharp.webp?v=3")}
+.painted-gallery .panel-2{background-image:url("art/c01-panel-2-sharp.webp?v=3")}
+.painted-gallery .panel-3{background-image:url("art/c01-panel-3-sharp.webp?v=3")}
+.painted-gallery .panel-4{background-image:url("art/c01-panel-4-sharp.webp?v=3")}
