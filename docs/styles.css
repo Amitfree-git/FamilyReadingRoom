@@ -15,3 +15,24 @@
 
 /* 在白话导读与原有重点句解释之间保留换段 */
 .plain-text{white-space:pre-line}
+
+/* FamilyReadingRoom · watercolor comic illustrations */
+.illustration-cover{height:clamp(194px,27vw,320px);position:relative;margin:0 0 16px;border:1px solid #e2dfd0;overflow:hidden;border-radius:12px;background:#dfebe6;box-shadow:0 6px 28px #31483c12}
+.classic-scene{display:block;width:100%;height:100%;min-height:140px}
+.illustration-cover .classic-scene{width:100%;height:100%;object-fit:cover}
+.art-watermark{position:absolute;z-index:1;right:15px;bottom:13px;color:#304a38a8;letter-spacing:.28em;writing-mode:vertical-rl;font:13px/1.3 var(--serif);padding:8px 4px;background:#ffffff47;border-radius:4px}
+.illustration-gallery{margin:12px 0 22px}
+.illustration-title{display:flex;gap:11px;align-items:center;margin:0 0 15px}
+.illustration-title h3{font:19px/1.3 var(--serif);margin:0 0 4px;color:var(--ink)}
+.illustration-title p{font-size:11px;line-height:1.6;margin:0;color:var(--muted)}
+.illustration-stamp{color:#987257;border:1px solid #b99479;border-radius:5px;padding:5px 7px;font:17px var(--serif)}
+.illustration-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.comic-frame{margin:0;min-width:0;overflow:hidden;border:1px solid #e6dfcc;background:#fffaf2;border-radius:9px;box-shadow:0 3px 11px #5344310b}
+.comic-art{aspect-ratio:16/9;overflow:hidden;background:#ecede2}
+.comic-art .classic-scene{width:100%;height:100%}
+.comic-frame figcaption{display:flex;align-items:baseline;gap:9px;padding:11px 12px;line-height:1.65;color:#453f36;font:13px var(--serif)}
+.comic-counter{font:12px/1.5 var(--serif);color:#a46d4f;flex:none}
+@media(min-width:1200px){.illustration-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.comic-frame figcaption{font-size:12px;padding:8px}.art-watermark{font-size:10px}.illustration-cover{height:200px}}
+@media(max-width:390px){.illustration-grid{grid-template-columns:minmax(0,1fr)}}
+@media print{.illustration-cover{height:170px;box-shadow:none;break-inside:avoid}.comic-art{aspect-ratio:16/8}.comic-frame{break-inside:avoid}.illustration-gallery{break-inside:avoid}.art-watermark{display:none}}
