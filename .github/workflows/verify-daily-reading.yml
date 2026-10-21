@@ -1,0 +1,41 @@
+name: Verify daily reading
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check docs/app.js
+          node --check docs/content.js
+      - name: Validate 30 contextual lessons and source references
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'), vm=require('node:vm'), assert=require('node:assert/strict');
+          const context={window:{}};
+          vm.runInNewContext(fs.readFileSync('docs/content.js','utf8'),context);
+          const data=context.window.CLASSICS_DATA;
+          assert.equal(data.lessons.length,30);
+          assert.equal(data.version,'2.0.0');
+          for(const l of data.lessons){
+            assert.ok(l.quote && l.focus && l.plain && l.kid,l.id+' fields');
+            assert.ok(l.quote.length>l.focus.length,l.id+' passage must exceed focus');
+            assert.ok(l.quote.length>=30,l.id+' passage too short');
+            assert.ok(l.refs.every(id=>data.sources[id]),l.id+' missing source');
+            assert.ok(l.passageType,l.id+' missing type');
+          }
+          const app=fs.readFileSync('docs/app.js','utf8');
+          assert.ok(app.includes('本课精读一句'));
+          assert.ok(app.includes('l.quote.split(/\\n+/)'));
+          assert.ok(!app.includes("if(l.id==='c01')lines"));
+          const html=fs.readFileSync('docs/index.html','utf8');
+          assert.ok(html.includes('每日一段'));
+          console.log('Validated',data.lessons.length,'daily passages');
+          NODE
