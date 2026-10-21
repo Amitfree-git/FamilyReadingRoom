@@ -5,6 +5,10 @@ on:
       - 'art-direction/**'
       - 'docs/art/hd/**'
       - 'scripts/check_original_art.py'
+      - 'docs/hd-illustrations.js'
+      - 'docs/styles.css'
+      - 'docs/app.js'
+      - 'docs/index.html'
   workflow_dispatch:
 jobs:
   validate:
@@ -16,3 +20,22 @@ jobs:
           python-version: '3.11'
       - run: pip install 'Pillow>=11,<13'
       - run: python scripts/check_original_art.py
+      - name: Check browser image renderer has no broken unapproved images
+        run: |
+          node --check docs/hd-illustrations.js
+          node --check docs/app.js
+          node <<'NODE'
+          const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
+          const ctx={window:{}};
+          vm.runInNewContext(fs.readFileSync('docs/hd-illustrations.js','utf8'),ctx);
+          assert.equal(ctx.window.HDClassicArt.approvedCount,0);
+          assert.equal(ctx.window.HDClassicArt.cover({id:'c01'}),'');
+          assert.equal(ctx.window.HDClassicArt.artStrip({id:'c01'}),'');
+          const html=fs.readFileSync('docs/index.html','utf8');
+          assert.ok(html.indexOf('src="hd-illustrations.js"')<html.indexOf('src="app.js"'));
+          const css=fs.readFileSync('docs/styles.css','utf8');
+          assert.ok(css.includes('.original-art-grid'));
+          assert.ok(css.includes('@media(max-width:599px)'));
+          assert.ok(css.includes('@media(min-width:600px) and (max-width:1023px)'));
+          console.log('PASS: graceful original-art fallback and responsive rules');
+          NODE
