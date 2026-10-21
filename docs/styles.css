@@ -36,3 +36,19 @@
 @media(max-width:560px){.illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.comic-frame figcaption{font-size:12px;padding:8px}.art-watermark{font-size:10px}.illustration-cover{height:200px}}
 @media(max-width:390px){.illustration-grid{grid-template-columns:minmax(0,1fr)}}
 @media print{.illustration-cover{height:170px;box-shadow:none;break-inside:avoid}.comic-art{aspect-ratio:16/8}.comic-frame{break-inside:avoid}.illustration-gallery{break-inside:avoid}.art-watermark{display:none}}
+
+/* Story-specific historical watercolor instead of repeated template figures.
+   Asset: 480x379 AVIF atlas, 480x167 cover + four 240x106 storyboard cells. */
+.illustration-cover.painting-cover{height:auto;aspect-ratio:480/167;border:1px solid #dfd3be;background:#f2eadb;overflow:hidden;position:relative;margin:0 0 16px}
+.painting-hero{position:absolute;inset:0;background:url("art/c01-comic.avif") left top/100% auto no-repeat}
+.painting-disclaimer{position:absolute;left:12px;bottom:10px;padding:4px 8px;border-radius:4px;background:#fff9edee;font-size:10px;color:#766c5e;line-height:1.7}
+.painted-gallery .painting-panel{aspect-ratio:240/106;height:auto;background-image:url("art/c01-comic.avif");background-repeat:no-repeat;background-size:200% auto;background-color:#e8decb}
+.painted-gallery .panel-1{background-position:0% 61.17%}
+.painted-gallery .panel-2{background-position:100% 61.17%}
+.painted-gallery .panel-3{background-position:0% 100%}
+.painted-gallery .panel-4{background-position:100% 100%}
+.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.painted-gallery .painting-footer{position:static;display:block;background:transparent;color:#89796a;padding:0;margin:8px 0 0;font-size:10px}
+@media(min-width:1190px){.painted-gallery .illustration-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:600px){.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.painting-disclaimer{font-size:9px}}
+@media(max-width:390px){.painted-gallery .illustration-grid{grid-template-columns:minmax(0,1fr)}}
