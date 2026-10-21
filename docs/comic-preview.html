@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light"><meta name="theme-color" content="#f7f5ef">
+<title>漫画讲义试读 · 齐桓公与管仲 | FamilyReadingRoom</title>
+<meta name="description" content="FamilyReadingRoom 国风水彩历史漫画讲义试用版。齐桓公、管仲、鲍叔牙的故事；先读原文，再看四幕历史漫画。">
+<style>
+:root{--ink:#253a31;--muted:#687970;--jade:#327466;--terra:#b96d45;--paper:#faf7ef;--line:#e7dfd0;--card:#fffdf8;--shadow:0 8px 30px #382d1a0c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f6f4ec;color:var(--ink);font-family:"PingFang SC","Microsoft Yahei",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC",serif}
+.wrap{width:min(1440px,calc(100% - 64px));margin:auto}
+.topbar{height:76px;border-bottom:1px solid #e5e1d8;background:#fcfaf5d9;backdrop-filter:blur(9px)}
+.topinner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font:700 19px Georgia,serif}
+.brand .mark{border:2px solid #287569;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font:24px serif;color:#287569}
+.brand small{display:block;font:13px/1.4 system-ui,sans-serif;margin-top:3px;font-weight:400;letter-spacing:.12em}
+.back{border:1px solid #d6ddd3;padding:10px 17px;border-radius:30px;text-decoration:none;color:#375b4d;font-size:13px;background:#fffdfa}
+main{padding:28px 0 60px}
+.kicker{color:#b46643;text-transform:uppercase;letter-spacing:.18em;font-size:13px;font-weight:650}
+.heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:8px 0 19px}
+h1{font-size:clamp(26px,3.2vw,42px);line-height:1.35;margin:5px 0;color:#20372d;font-weight:700;letter-spacing:.025em}
+.lead{font-size:16px;line-height:1.7;color:#667569;margin:6px 0 0}
+.preview{font-size:12px;color:#916e54;background:#f9eddf;border:1px solid #e7d6bd;border-radius:20px;padding:8px 11px;white-space:nowrap}
+.hero{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(320px,1fr);gap:14px;align-items:stretch}
+.figure,.quote,.story,.panel,.meaning,.notes,.think,.practice{margin:0;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+.figure{position:relative;background:#e9e3d2;aspect-ratio:16/7;min-height:360px}
+.figure img{height:100%;width:100%;object-fit:cover;object-position:49% center;display:block}
+.figure figcaption{position:absolute;left:15px;bottom:14px;background:#fff9edec;color:#695b4c;padding:8px 11px;border-radius:6px;font-size:12px}
+.quote{padding:22px 26px;background:linear-gradient(150deg,#fcf6e9,#fffefb 65%,#f8efe1)}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#7e613f;letter-spacing:.11em}
+.icon{width:25px;height:25px;border-radius:6px;background:#c17d4e;color:#fff;display:inline-grid;place-items:center;font:17px serif}
+.sub{color:#9a8a76;font-size:12px;margin:6px 0 15px}
+.quote blockquote{margin:0;font-size:clamp(16px,1.5vw,20px);line-height:2;color:#352e28;letter-spacing:.03em}
+.quote blockquote p{margin:0 0 17px}
+.quote blockquote p:last-child{margin-bottom:0}
+.chip{display:inline-flex;gap:6px;background:#eff3e9;padding:7px 12px;color:#547461;border-radius:3px;font-size:12px;margin-top:15px}
+.row-title{display:flex;align-items:center;gap:10px;margin:28px 0 15px}
+.row-title .book{color:#ab633c;border:1px solid #d9b18c;border-radius:6px;padding:4px 7px;font:19px serif}
+h2{font-size:clamp(22px,2.1vw,28px);margin:0;color:#2a3830}
+.row-title p{margin:5px 0 0;color:#8a8d84;font-size:12px}
+.comics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.story{min-width:0}
+.art{height:auto;aspect-ratio:8/5;overflow:hidden;background:#e9e4d9;position:relative}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+.index{position:absolute;left:10px;top:10px;border-radius:50%;width:32px;height:32px;background:#ba6d48;border:3px solid #fff7e4;color:white;display:grid;place-items:center;font:17px Georgia,serif;box-shadow:0 2px 7px #30251740}
+.story-body{padding:13px 14px 18px}
+.story-body h3{font-size:17px;margin:0 0 7px;font-family:"Songti SC","STSong",serif;line-height:1.55}
+.story-body p{font-size:13px;line-height:1.8;color:#64594f;margin:0}
+.bottom{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:13px;margin-top:22px}
+.meaning,.notes,.think,.practice{padding:20px 22px}
+.meaning{background:linear-gradient(145deg,#edf4f1,#f9fcfa)}
+.notes{background:linear-gradient(145deg,#f7f4e8,#fffdf8)}
+.think{background:linear-gradient(145deg,#fff2e8,#fffdf8)}
+.bottom h3{margin:0 0 12px;font-size:19px;letter-spacing:.04em;font-family:"Songti SC","STSong",serif}
+.bottom p{line-height:1.95;font-size:14px;margin:0;color:#4e5a51}
+.notes dl{display:grid;grid-template-columns:auto 1fr;gap:7px 11px;margin:0;font-size:13px;line-height:1.7}
+.notes dt{font-weight:700;color:#6b654e;white-space:nowrap}
+.notes dd{margin:0;color:#5a5b51}
+.think ol{padding-left:20px;margin:0;color:#624f43;font-size:14px;line-height:1.85}
+.notice{background:#faf4e8;color:#806c51;font-size:12px;line-height:1.85;padding:13px 18px;border:1px dashed #e2d2b7;border-radius:8px;margin-top:19px}
+.end{display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--line);padding-top:24px;margin-top:28px;color:#868e83;font-size:12px}
+.end a{color:#427a6c}
+@media(max-width:1200px){.hero{grid-template-columns:minmax(0,1.55fr) minmax(270px,1fr)}.comics{grid-template-columns:repeat(2,minmax(0,1fr))}.figure{min-height:0;aspect-ratio:16/9}.bottom{grid-template-columns:1fr 1fr}.meaning{grid-column:span 2}}
+@media(max-width:700px){.wrap{width:calc(100% - 28px)}.topbar{height:65px}.brand{font-size:15px}.brand .mark{width:31px;height:31px}.brand small{font-size:11px}.back{padding:9px 11px;font-size:12px}main{padding-top:19px}.heading{display:block;margin:7px 0 16px}.preview{display:inline-block;margin-top:12px}.lead{font-size:14px}.hero{display:block}.figure{min-height:0;aspect-ratio:4/3;border-radius:10px 10px 0 0}.figure img{object-position:50% center}.figure figcaption{bottom:10px;left:9px;font-size:10px;padding:6px 8px}.quote{border-radius:0 0 10px 10px;margin-top:-1px;padding:18px 20px}.quote blockquote{font-size:17px;line-height:1.9}.row-title{margin-top:22px}.comics{grid-template-columns:1fr;gap:14px}.story-body{padding:12px 14px 15px}.story-body h3{font-size:18px}.story-body p{font-size:14px}.bottom{display:flex;flex-direction:column}.meaning,.notes,.think{padding:17px}.end{display:block}.end a{display:block;margin-top:8px}}
+@media(min-width:701px) and (max-width:900px){.hero{display:block}.figure{aspect-ratio:16/7}.quote{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap topinner">
+<a class="brand" href="./"><span class="mark" aria-hidden="true">📖</span><span>FamilyReadingRoom<small>家庭经典共读</small></span></a>
+<a class="back" href="./#/lesson/c01">返回原课程 ↗</a>
+</div></header>
+<main class="wrap">
+<div class="kicker">漫画讲义试读 · Visual Lesson Preview</div>
+<div class="heading"><div><h1 class="serif">第01课 · 齐桓公与管仲</h1><p class="lead">《论语·宪问》｜读一段经典，看懂一段历史，再和家人一起讨论。</p></div><span class="preview">试发布 · 第1课</span></div>
+<div class="hero">
+<figure class="figure">
+<img src="art/c01-hero-sharp.webp?v=4" width="1920" height="668" alt="孔子在大树下与子路等弟子讲述管仲的事迹，远景是山川和城郭" fetchpriority="high">
+<figcaption>历史人物与场景为绘本艺术演绎</figcaption>
+</figure>
+<section class="quote" aria-labelledby="original"><div class="eyebrow" id="original"><span class="icon">文</span> 原文</div><div class="sub">《论语·宪问》</div><blockquote class="serif">
+<p>子路曰：“桓公杀公子纠，召忽死之，管仲不死。”曰：“未仁乎？”</p>
+<p>子曰：“桓公九合诸侯，不以兵车，管仲之力也。如其仁，如其仁。”</p></blockquote><div class="chip">重点句：桓公九合诸侯，不以兵车，管仲之力也。</div>
+</section>
+</div>
+<div class="row-title"><div class="book" aria-hidden="true">畫</div><div><h2 class="serif">历史故事 · 四幕漫画</h2><p>一箭之仇，为什么没有挡住一次合作？</p></div></div>
+<section class="comics" aria-label="四幅历史漫画">
+<figure class="story"><div class="art"><img src="art/c01-panel-1-sharp.webp?v=4" width="960" height="424" loading="lazy" alt="公子小白与公子纠争位的历史场景"><span class="index">1</span></div><figcaption class="story-body"><h3>曾经站在两边</h3><p>公子小白与公子纠争位。管仲辅佐公子纠，曾在争位途中射中小白的衣带钩。</p></figcaption></figure>
+<figure class="story"><div class="art"><img src="art/c01-panel-2-sharp.webp?v=4" width="960" height="424" loading="lazy" alt="鲍叔牙向齐桓公举荐管仲的历史绘本画面"><span class="index">2</span></div><figcaption class="story-body"><h3>鲍叔牙举荐管仲</h3><p>公子小白成为齐桓公后，鲍叔牙力荐曾经的对手管仲，认为他有治理国家的能力。</p></figcaption></figure>
+<figure class="story"><div class="art"><img src="art/c01-panel-3-sharp.webp?v=4" width="960" height="424" loading="lazy" alt="管仲和齐国官员研究治理国家的画面"><span class="index">3</span></div><figcaption class="story-body"><h3>管仲治理齐国</h3><p>管仲整顿政务、发展生产，使齐国逐渐强盛。被任用的人也用实际行动证明才能。</p></figcaption></figure>
+<figure class="story"><div class="art"><img src="art/c01-panel-4-sharp.webp?v=4" width="960" height="424" loading="lazy" alt="齐桓公会合各路诸侯的古代会盟场景"><span class="index">4</span></div><figcaption class="story-body"><h3>九合诸侯</h3><p>齐桓公多次召集诸侯会盟，联合各方；孔子称赞管仲在其中所发挥的作用。</p></figcaption></figure>
+</section>
+<div class="bottom">
+<section class="meaning"><h3>📖 白话文解释</h3><p>子路疑问：管仲没有为旧主公子纠殉死，是否缺少仁德？孔子则从更广的视角评价管仲：他辅佐齐桓公联合诸侯，促成重要的会盟，为当时的秩序作出了贡献。评价一个人，也要看他的实际行动和长远影响。</p></section>
+<section class="notes"><h3>🔖 认识几个词</h3><dl><dt>九合诸侯</dt><dd>多次召集诸侯会盟；“九”的解释存在分歧。</dd><dt>不以兵车</dt><dd>在此强调会盟的非武力一面，不等于齐国从未打仗。</dd><dt>管仲</dt><dd>齐国政治家，辅佐齐桓公治理国家。</dd></dl></section>
+<section class="think"><h3>💬 亲子讨论</h3><ol><li>齐桓公如果只记得一箭之仇，会失去什么机会？</li><li>别人曾经和你意见不同，还能成为好伙伴吗？</li><li>判断一个人，应当关注哪些实际行动？</li></ol></section>
+</div>
+<div class="notice">本页为讲义版式与清晰度试发布，仅试用此前已提交的独立高像素插图；并非新制作的12幅高清原创画作。原文与所有讲解均采用网页文字，便于后续校对和调整。人物服饰、宫城等场景属于艺术想象，不代表严格的历史复原。</div>
+<footer class="end"><span>FamilyReadingRoom · 一本书，一段故事，一次家庭对话</span><a href="./#/lesson/c01">返回完整的家庭共读课程</a></footer>
+</main></body></html>
