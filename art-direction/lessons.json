@@ -1,0 +1,1003 @@
+{
+  "version": "1.0",
+  "created": "2026-10-22",
+  "state": "planned (no images implicitly considered produced)",
+  "style": "精细国风历史绘本，手绘黑色轮廓、淡水彩渲染、自然纸感、明确人物动作、故事场景不重复。无标题、无汉字、无 UI、无文字框、无水印。保留人物衣饰跨分镜一致性。需区分史实、传说、寓言。",
+  "pixelRequirements": {
+    "heroDesktop": {
+      "width": 2560,
+      "height": 1120,
+      "aspectRatio": "16:7",
+      "safeArea": "核心人物置于画面中心40%；两侧各12%可安全裁切",
+      "mustBeOriginal": true
+    },
+    "heroMobile": {
+      "width": 1200,
+      "height": 900,
+      "aspectRatio": "4:3",
+      "notes": "必须单独创作手机构图，不可把桌面截图二次缩放",
+      "mustBeOriginal": true
+    },
+    "storyPanel": {
+      "width": 1600,
+      "height": 1000,
+      "aspectRatio": "8:5",
+      "notes": "每个故事分镜单独生成原画；不能从一张小尺寸拼图中放大分割",
+      "mustBeOriginal": true
+    },
+    "responsive": "desktop hero 16:7, tablet 16:9, phone 4:3; comic 4 columns desktop, 2 tablet, 1 mobile; browser image srcset + sizes; object-fit cover used only with pre-approved safe area",
+    "export": "WebP 88-92 质量，原始 PNG 单独归档，sRGB，长期缓存文件名内容哈希"
+  },
+  "lessons": [
+    {
+      "id": "c01",
+      "book": "论语",
+      "chapter": "宪问",
+      "title": "把对手变成伙伴的智慧",
+      "storyKind": "史籍记载",
+      "heroPrompt": "春秋：孔子在树下与子路谈论管仲；主讲与历史回忆严格分开",
+      "storyFrames": [
+        {
+          "heading": "曾经站在两边",
+          "prompt": "齐国王位之争，两名公子从不同阵营对峙"
+        },
+        {
+          "heading": "一个人看见了另一个人的才能",
+          "prompt": "鲍叔牙向齐桓公举荐管仲，君臣室内严肃对话"
+        },
+        {
+          "heading": "先把自己的国家治理好",
+          "prompt": "管仲与齐国官员讨论税制、农田与民生"
+        },
+        {
+          "heading": "从争强，走向会盟",
+          "prompt": "齐桓公礼仪会盟诸侯，旌旗与多国使节"
+        },
+        {
+          "heading": "孔子为什么称赞管仲",
+          "prompt": "孔子耐心回答子路，学生若有所思"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c01/cover-desktop.webp",
+        "mobile": "docs/art/hd/c01/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c01/scene-01.webp",
+          "docs/art/hd/c01/scene-02.webp",
+          "docs/art/hd/c01/scene-03.webp",
+          "docs/art/hd/c01/scene-04.webp",
+          "docs/art/hd/c01/scene-05.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c02",
+      "book": "论语",
+      "chapter": "学而",
+      "title": "会背之后，还可以再懂一点",
+      "storyKind": "史籍记载",
+      "heroPrompt": "春秋孔子向师襄子学琴，古琴与琴桌是中心道具",
+      "storyFrames": [
+        {
+          "heading": "曲子熟了，还不算结束",
+          "prompt": "师襄子示范演奏古琴，孔子侧耳凝听"
+        },
+        {
+          "heading": "从弹出来，到听懂它",
+          "prompt": "孔子反复练一段琴曲，指尖拨弦特写"
+        },
+        {
+          "heading": "慢一点，是为了学进去",
+          "prompt": "师襄子建议换新曲，孔子继续体味曲意"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c02/cover-desktop.webp",
+        "mobile": "docs/art/hd/c02/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c02/scene-01.webp",
+          "docs/art/hd/c02/scene-02.webp",
+          "docs/art/hd/c02/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c03",
+      "book": "论语",
+      "chapter": "为政",
+      "title": "说出“不知道”，也是一种聪明",
+      "storyKind": "经典寓言",
+      "heroPrompt": "《列子》两小儿辩日寓言，以日出与日中光影变化讲观察局限",
+      "storyFrames": [
+        {
+          "heading": "两种观察",
+          "prompt": "清晨两个孩子仰望日出，争相指点"
+        },
+        {
+          "heading": "理由还不够",
+          "prompt": "正午孩子们辩论，热浪与小池塘对照"
+        },
+        {
+          "heading": "问题可以继续问下去",
+          "prompt": "孔子坦然承认不能立刻回答，孩子沉思"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c03/cover-desktop.webp",
+        "mobile": "docs/art/hd/c03/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c03/scene-01.webp",
+          "docs/art/hd/c03/scene-02.webp",
+          "docs/art/hd/c03/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c04",
+      "book": "论语",
+      "chapter": "述而",
+      "title": "每个人身上，都有可学的地方",
+      "storyKind": "古籍对话",
+      "heroPrompt": "孔子入太庙问礼，礼器和恭敬的仪式动作",
+      "storyFrames": [
+        {
+          "heading": "一位懂礼的人来访",
+          "prompt": "孔子走入殿宇，向守礼长者请教"
+        },
+        {
+          "heading": "提问不是丢脸",
+          "prompt": "孔子询问礼器的摆放，一旁有人耐心解释"
+        },
+        {
+          "heading": "把别人看作知识的来源",
+          "prompt": "孔子礼貌向长者请教，学生在旁学习"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c04/cover-desktop.webp",
+        "mobile": "docs/art/hd/c04/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c04/scene-01.webp",
+          "docs/art/hd/c04/scene-02.webp",
+          "docs/art/hd/c04/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c05",
+      "book": "论语",
+      "chapter": "卫灵公",
+      "title": "把别人的感受，也放在心上",
+      "storyKind": "古籍对话",
+      "heroPrompt": "孔子与子贡讨论恕，春秋庭院，强调设身处地",
+      "storyFrames": [
+        {
+          "heading": "一个很大的问题",
+          "prompt": "子贡正襟问孔子终身可行之道"
+        },
+        {
+          "heading": "从“恕”开始",
+          "prompt": "孔子用温和手势讲解换位思考"
+        },
+        {
+          "heading": "把原则带回日常",
+          "prompt": "孩子们主动询问彼此感受，化解争执"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c05/cover-desktop.webp",
+        "mobile": "docs/art/hd/c05/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c05/scene-01.webp",
+          "docs/art/hd/c05/scene-02.webp",
+          "docs/art/hd/c05/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c06",
+      "book": "论语",
+      "chapter": "为政",
+      "title": "信任，是一件件小事攒起来的",
+      "storyKind": "史籍记载",
+      "heroPrompt": "商鞅立木取信，战国秦国城门和木材",
+      "storyFrames": [
+        {
+          "heading": "告示贴出，却没人动",
+          "prompt": "秦国城门立着木柱，众人围观布告"
+        },
+        {
+          "heading": "承诺被兑现",
+          "prompt": "平民搬运木柱穿过城门，众人惊讶"
+        },
+        {
+          "heading": "相信从行动开始",
+          "prompt": "官员兑现承诺、民众见证守信"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c06/cover-desktop.webp",
+        "mobile": "docs/art/hd/c06/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c06/scene-01.webp",
+          "docs/art/hd/c06/scene-02.webp",
+          "docs/art/hd/c06/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c07",
+      "book": "论语",
+      "chapter": "卫灵公",
+      "title": "道歉之后，还要有一个改变",
+      "storyKind": "史籍记载",
+      "heroPrompt": "战国赵国廉颇与蔺相如将相和，不混入其他朝代元素",
+      "storyFrames": [
+        {
+          "heading": "不服气的将军",
+          "prompt": "廉颇着甲在府门前流露不满"
+        },
+        {
+          "heading": "听见另一种理由",
+          "prompt": "蔺相如对门客耐心解释顾全大局"
+        },
+        {
+          "heading": "承认并修复",
+          "prompt": "廉颇负荆请罪，蔺相如扶起他"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c07/cover-desktop.webp",
+        "mobile": "docs/art/hd/c07/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c07/scene-01.webp",
+          "docs/art/hd/c07/scene-02.webp",
+          "docs/art/hd/c07/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c08",
+      "book": "论语",
+      "chapter": "子路",
+      "title": "别为了快一点，漏掉了重要的事",
+      "storyKind": "古籍对话",
+      "heroPrompt": "子夏问政，春秋晚期朴素庭院与乡里治理",
+      "storyFrames": [
+        {
+          "heading": "新任务带来的问题",
+          "prompt": "子夏携简向孔子请教治理"
+        },
+        {
+          "heading": "不要只盯着立刻见效",
+          "prompt": "子夏巡视田野倾听农人建议"
+        },
+        {
+          "heading": "把目的放回眼前",
+          "prompt": "子夏与民众共同协商长远水利建设"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c08/cover-desktop.webp",
+        "mobile": "docs/art/hd/c08/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c08/scene-01.webp",
+          "docs/art/hd/c08/scene-02.webp",
+          "docs/art/hd/c08/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c09",
+      "book": "孟子",
+      "chapter": "梁惠王上",
+      "title": "把关心，从家门里带到家门外",
+      "storyKind": "古籍对话",
+      "heroPrompt": "孟子与齐宣王见牛，战国庭院，恻隐与推恩",
+      "storyFrames": [
+        {
+          "heading": "一次不忍",
+          "prompt": "宫廷牛被牵过，齐宣王不忍凝望"
+        },
+        {
+          "heading": "从眼前到看不见的地方",
+          "prompt": "孟子与齐宣王对坐讨论推恩"
+        },
+        {
+          "heading": "关心要能走得更远",
+          "prompt": "乡里老人和幼童得到照料的现实民生"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c09/cover-desktop.webp",
+        "mobile": "docs/art/hd/c09/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c09/scene-01.webp",
+          "docs/art/hd/c09/scene-02.webp",
+          "docs/art/hd/c09/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c10",
+      "book": "孟子",
+      "chapter": "告子下",
+      "title": "经历挫折，更要学习怎样应对",
+      "storyKind": "史籍记载",
+      "heroPrompt": "越王勾践与自省，春秋越国，传统卧薪尝胆意象与务实治理并存",
+      "storyFrames": [
+        {
+          "heading": "败局之后",
+          "prompt": "勾践战败后的低调反省，远处暮色城墙"
+        },
+        {
+          "heading": "苦味是提醒，不是答案",
+          "prompt": "勾践在陋室尝苦胆提醒自己，灯光静谧"
+        },
+        {
+          "heading": "还有具体的工作",
+          "prompt": "越国人耕作生产、官吏重整秩序"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c10/cover-desktop.webp",
+        "mobile": "docs/art/hd/c10/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c10/scene-01.webp",
+          "docs/art/hd/c10/scene-02.webp",
+          "docs/art/hd/c10/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c11",
+      "book": "孟子",
+      "chapter": "离娄上",
+      "title": "有方法，巧手才更可靠",
+      "storyKind": "古史传说",
+      "heroPrompt": "大禹治水是上古传说，疏洪、勘测与田野三幕",
+      "storyFrames": [
+        {
+          "heading": "一个长期难题",
+          "prompt": "洪水淹岸居民转移至高处"
+        },
+        {
+          "heading": "带着准绳与规矩",
+          "prompt": "禹带工匠用绳尺查看河谷高低"
+        },
+        {
+          "heading": "让办法跟着条件走",
+          "prompt": "清澈水流沿疏导渠道流向农田"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c11/cover-desktop.webp",
+        "mobile": "docs/art/hd/c11/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c11/scene-01.webp",
+          "docs/art/hd/c11/scene-02.webp",
+          "docs/art/hd/c11/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c12",
+      "book": "孟子",
+      "chapter": "梁惠王上",
+      "title": "先问对不对，再问划不划算",
+      "storyKind": "古籍对话",
+      "heroPrompt": "梁惠王与孟子论义利，战国魏国宫廷",
+      "storyFrames": [
+        {
+          "heading": "远道而来的学者",
+          "prompt": "梁惠王接见远来的孟子，席地而谈"
+        },
+        {
+          "heading": "不是一张收益清单",
+          "prompt": "梁惠王询问利益，孟子庄严思辨"
+        },
+        {
+          "heading": "换一种衡量",
+          "prompt": "百姓争夺资源与协商互助形成对比"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c12/cover-desktop.webp",
+        "mobile": "docs/art/hd/c12/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c12/scene-01.webp",
+          "docs/art/hd/c12/scene-02.webp",
+          "docs/art/hd/c12/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c13",
+      "book": "道德经",
+      "chapter": "第六十四章",
+      "title": "很远的路，从今天这一小步开始",
+      "storyKind": "史籍记载",
+      "heroPrompt": "张骞出西域为汉代历史，作为老子千里之行的后世例证",
+      "storyFrames": [
+        {
+          "heading": "走向不了解的地方",
+          "prompt": "汉代使团整装出行，坐骑与行囊"
+        },
+        {
+          "heading": "原来的目标没有全部实现",
+          "prompt": "沙漠草原交界的漫长旅途，逆风跋涉"
+        },
+        {
+          "heading": "一步步积累新的认识",
+          "prompt": "张骞返乡后陈述远途见闻，官员侧耳"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c13/cover-desktop.webp",
+        "mobile": "docs/art/hd/c13/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c13/scene-01.webp",
+          "docs/art/hd/c13/scene-02.webp",
+          "docs/art/hd/c13/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c14",
+      "book": "道德经",
+      "chapter": "第三十三章",
+      "title": "知道自己的短处，也是一种本领",
+      "storyKind": "史籍记载",
+      "heroPrompt": "汉高祖刘邦承认自己的短处，谋略后勤与领兵各擅其长",
+      "storyFrames": [
+        {
+          "heading": "一场关于成功的讨论",
+          "prompt": "汉初刘邦与群臣谈论成败"
+        },
+        {
+          "heading": "把不同的能力分开看",
+          "prompt": "张良策划、萧何运粮、韩信领兵，三段各异场景"
+        },
+        {
+          "heading": "承认短处，才会安排合作",
+          "prompt": "刘邦向三位功臣致意，共同商议"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c14/cover-desktop.webp",
+        "mobile": "docs/art/hd/c14/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c14/scene-01.webp",
+          "docs/art/hd/c14/scene-02.webp",
+          "docs/art/hd/c14/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c15",
+      "book": "道德经",
+      "chapter": "第八章",
+      "title": "像水一样，让周围更好一点",
+      "storyKind": "史籍记载",
+      "heroPrompt": "李冰治理岷江：奔腾江水、分水设施、田间灌溉",
+      "storyFrames": [
+        {
+          "heading": "水既有力量，也需要治理",
+          "prompt": "山谷岷江急流扑面而来，俯拍壮阔"
+        },
+        {
+          "heading": "从水道，到田地",
+          "prompt": "李冰与工匠在河岸测量和设计水道"
+        },
+        {
+          "heading": "读水，也读人的作为",
+          "prompt": "河网通向田间，农民耕作，水草丰美"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c15/cover-desktop.webp",
+        "mobile": "docs/art/hd/c15/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c15/scene-01.webp",
+          "docs/art/hd/c15/scene-02.webp",
+          "docs/art/hd/c15/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c16",
+      "book": "道德经",
+      "chapter": "第五十八章",
+      "title": "别急着给一件事下最后的结论",
+      "storyKind": "经典寓言",
+      "heroPrompt": "塞翁失马来自哲理寓言，不把寓言包装成史实",
+      "storyFrames": [
+        {
+          "heading": "失去，也许不是终点",
+          "prompt": "边塞老人发现马匹走失，家人在庭院等候"
+        },
+        {
+          "heading": "得到，也未必只有好处",
+          "prompt": "丢失的马带回同伴，老人神情平静"
+        },
+        {
+          "heading": "把判断留一点空间",
+          "prompt": "人生祸福变化，老人劝家人不要急于定论"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c16/cover-desktop.webp",
+        "mobile": "docs/art/hd/c16/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c16/scene-01.webp",
+          "docs/art/hd/c16/scene-02.webp",
+          "docs/art/hd/c16/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c17",
+      "book": "道德经",
+      "chapter": "第六十三章",
+      "title": "把大事情，拆成看得见的小事情",
+      "storyKind": "史籍记载",
+      "heroPrompt": "司马迁写史记：远行访古、整理竹简、编纂史书",
+      "storyFrames": [
+        {
+          "heading": "先去看、去问",
+          "prompt": "司马迁访故老遗址，山野远景"
+        },
+        {
+          "heading": "接着整理许多材料",
+          "prompt": "书案上历史记录纷陈，司马迁核对竹简"
+        },
+        {
+          "heading": "大书并非一口气写成",
+          "prompt": "通宵整订史稿，油灯与竹简特写"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c17/cover-desktop.webp",
+        "mobile": "docs/art/hd/c17/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c17/scene-01.webp",
+          "docs/art/hd/c17/scene-02.webp",
+          "docs/art/hd/c17/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c18",
+      "book": "荀子",
+      "chapter": "劝学",
+      "title": "看得见的一步，也算进步",
+      "storyKind": "史籍记载",
+      "heroPrompt": "孔子反复读竹简，“韦编三绝”古代典故",
+      "storyFrames": [
+        {
+          "heading": "一种古老的书",
+          "prompt": "竹简与编绳的细节特写"
+        },
+        {
+          "heading": "一次次翻读",
+          "prompt": "孔子晨昏不断读简，断开的绳结"
+        },
+        {
+          "heading": "每次留下一个收获",
+          "prompt": "孔子向学生讲解自己反复领会的道理"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c18/cover-desktop.webp",
+        "mobile": "docs/art/hd/c18/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c18/scene-01.webp",
+          "docs/art/hd/c18/scene-02.webp",
+          "docs/art/hd/c18/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c19",
+      "book": "荀子",
+      "chapter": "劝学",
+      "title": "坚持，不只是重复用力",
+      "storyKind": "史籍记载",
+      "heroPrompt": "东汉张衡钻研天文：观察、制作、思考",
+      "storyFrames": [
+        {
+          "heading": "不只会一门本领",
+          "prompt": "张衡夜观星空，轻披长袍"
+        },
+        {
+          "heading": "长时间的构思",
+          "prompt": "张衡在案上设计复杂机械环仪"
+        },
+        {
+          "heading": "努力也需要思考",
+          "prompt": "完成后师友围观讨论和验证仪器"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c19/cover-desktop.webp",
+        "mobile": "docs/art/hd/c19/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c19/scene-01.webp",
+          "docs/art/hd/c19/scene-02.webp",
+          "docs/art/hd/c19/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c20",
+      "book": "荀子",
+      "chapter": "劝学",
+      "title": "会借助工具，不代表本领更差",
+      "storyKind": "史籍记载",
+      "heroPrompt": "郑国渠秦国水利，工具扩展人力的能力",
+      "storyFrames": [
+        {
+          "heading": "工程背后的复杂起点",
+          "prompt": "关中黄土高原考察和测量渠线"
+        },
+        {
+          "heading": "看见工程的实际作用",
+          "prompt": "工匠使用绳尺与工具共同开掘长渠"
+        },
+        {
+          "heading": "工具改变能做的事情",
+          "prompt": "渠水滋养田地，远处农庄井然有序"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c20/cover-desktop.webp",
+        "mobile": "docs/art/hd/c20/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c20/scene-01.webp",
+          "docs/art/hd/c20/scene-02.webp",
+          "docs/art/hd/c20/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c21",
+      "book": "庄子",
+      "chapter": "养生主",
+      "title": "有选择地学，别让求知耗尽自己",
+      "storyKind": "经典寓言",
+      "heroPrompt": "庄子庖丁解牛是哲学寓言，突出熟练与顺势，无血腥",
+      "storyFrames": [
+        {
+          "heading": "熟练背后的观察",
+          "prompt": "庖丁先静观牛体筋骨结构，厅堂肃静"
+        },
+        {
+          "heading": "顺着结构行动",
+          "prompt": "庖丁轻巧持刀循理分割，动作柔和、无血腥"
+        },
+        {
+          "heading": "技艺变成生活的启发",
+          "prompt": "文惠君认真听庖丁总结经验"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c21/cover-desktop.webp",
+        "mobile": "docs/art/hd/c21/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c21/scene-01.webp",
+          "docs/art/hd/c21/scene-02.webp",
+          "docs/art/hd/c21/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c22",
+      "book": "庄子",
+      "chapter": "秋水",
+      "title": "我们怎样知道别人的感受？",
+      "storyKind": "哲理对话",
+      "heroPrompt": "庄子惠子濠梁观鱼，山川、石桥和思辨是视觉主线",
+      "storyFrames": [
+        {
+          "heading": "看见自在的鱼",
+          "prompt": "庄子和惠子站桥上望河中小鱼"
+        },
+        {
+          "heading": "你怎么知道？",
+          "prompt": "两人在桥上辩论，手势与眼神形成对比"
+        },
+        {
+          "heading": "问题不止一个答案",
+          "prompt": "镜头移入清溪，鱼从容游动"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c22/cover-desktop.webp",
+        "mobile": "docs/art/hd/c22/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c22/scene-01.webp",
+          "docs/art/hd/c22/scene-02.webp",
+          "docs/art/hd/c22/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c23",
+      "book": "庄子",
+      "chapter": "秋水",
+      "title": "走出自己熟悉的那一小块地方",
+      "storyKind": "经典寓言",
+      "heroPrompt": "庄子秋水河伯见海为寓言，有拟人化河伯与北海若",
+      "storyFrames": [
+        {
+          "heading": "水大了，心也自满了",
+          "prompt": "河伯望着秋水暴涨沾沾自喜"
+        },
+        {
+          "heading": "到了更大的水域",
+          "prompt": "河伯到海边遇无垠大海，人物渺小"
+        },
+        {
+          "heading": "不再拿局部当全部",
+          "prompt": "北海若与河伯讨论眼界，气氛平静"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c23/cover-desktop.webp",
+        "mobile": "docs/art/hd/c23/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c23/scene-01.webp",
+          "docs/art/hd/c23/scene-02.webp",
+          "docs/art/hd/c23/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c24",
+      "book": "庄子",
+      "chapter": "大宗师",
+      "title": "帮助彼此，也一起改善处境",
+      "storyKind": "经典寓言",
+      "heroPrompt": "相濡以沫是寓言，用两条鱼表达困境和自由",
+      "storyFrames": [
+        {
+          "heading": "先看见困境",
+          "prompt": "干涸河床中的两个浅水洼"
+        },
+        {
+          "heading": "互助固然重要",
+          "prompt": "两条鱼用水滴相互救急，温情而克制"
+        },
+        {
+          "heading": "还可以改变什么？",
+          "prompt": "广阔江河鱼游向不同方向，宁静留白"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c24/cover-desktop.webp",
+        "mobile": "docs/art/hd/c24/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c24/scene-01.webp",
+          "docs/art/hd/c24/scene-02.webp",
+          "docs/art/hd/c24/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c25",
+      "book": "史记",
+      "chapter": "李将军列传",
+      "title": "真诚的行动，自有它的分量",
+      "storyKind": "史籍记载",
+      "heroPrompt": "李广将军与桃李成蹊，军营责任和桃树寓意对照",
+      "storyFrames": [
+        {
+          "heading": "先看怎样相处",
+          "prompt": "李广在军营与士卒共同生活"
+        },
+        {
+          "heading": "不靠漂亮话",
+          "prompt": "李广为士卒处理琐事，低调且耐心"
+        },
+        {
+          "heading": "树下的小路",
+          "prompt": "桃树李树下自然形成小径，春日花开"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c25/cover-desktop.webp",
+        "mobile": "docs/art/hd/c25/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c25/scene-01.webp",
+          "docs/art/hd/c25/scene-02.webp",
+          "docs/art/hd/c25/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c26",
+      "book": "史记",
+      "chapter": "陈涉世家",
+      "title": "可以有志向，也要给志向配上行动",
+      "storyKind": "史籍记载",
+      "heroPrompt": "秦末陈胜佣耕与燕雀鸿鹄之志，田野与天空",
+      "storyFrames": [
+        {
+          "heading": "眼前的工作与心里的想法",
+          "prompt": "年轻陈胜在田间为人耕种"
+        },
+        {
+          "heading": "旁人的不理解",
+          "prompt": "陈胜停下锄具抒发志向，同伴不信"
+        },
+        {
+          "heading": "一句话之外，还有漫长道路",
+          "prompt": "鸿鹄高翔远空，陈胜凝望，目光坚决"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c26/cover-desktop.webp",
+        "mobile": "docs/art/hd/c26/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c26/scene-01.webp",
+          "docs/art/hd/c26/scene-02.webp",
+          "docs/art/hd/c26/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c27",
+      "book": "史记",
+      "chapter": "高祖本纪",
+      "title": "行动之前，先把局面想清楚",
+      "storyKind": "史籍记载",
+      "heroPrompt": "刘邦论张良萧何韩信，彰显不同贡献",
+      "storyFrames": [
+        {
+          "heading": "不只是前线的表现",
+          "prompt": "张良在帐内地图前谋划"
+        },
+        {
+          "heading": "另一篇里的相近评价",
+          "prompt": "萧何组织粮草供给，车队穿行"
+        },
+        {
+          "heading": "看见准备工作",
+          "prompt": "韩信统率整齐军阵，远景显示组织性"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c27/cover-desktop.webp",
+        "mobile": "docs/art/hd/c27/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c27/scene-01.webp",
+          "docs/art/hd/c27/scene-02.webp",
+          "docs/art/hd/c27/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c28",
+      "book": "史记",
+      "chapter": "留侯世家",
+      "title": "愿意听建议，也要看建议的内容",
+      "storyKind": "史籍记载",
+      "heroPrompt": "刘邦入秦宫听逆耳忠言，展示决定前后的转变",
+      "storyFrames": [
+        {
+          "heading": "看见繁华之后",
+          "prompt": "刘邦进入秦宫看见富丽陈设"
+        },
+        {
+          "heading": "先有提醒，再有劝说",
+          "prompt": "樊哙与张良在宫中耐心劝谏刘邦"
+        },
+        {
+          "heading": "把话变成行动",
+          "prompt": "刘邦离宫赴霸上，背后宫门远去"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c28/cover-desktop.webp",
+        "mobile": "docs/art/hd/c28/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c28/scene-01.webp",
+          "docs/art/hd/c28/scene-02.webp",
+          "docs/art/hd/c28/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c29",
+      "book": "史记",
+      "chapter": "淮阴侯列传",
+      "title": "再聪明的人，也需要别人帮忙检查",
+      "storyKind": "史籍记载",
+      "heroPrompt": "韩信向李左车听取劝告，谦虚才能听到良策",
+      "storyFrames": [
+        {
+          "heading": "胜负之外仍有知识",
+          "prompt": "韩信尊重地邀请李左车入帐"
+        },
+        {
+          "heading": "不让身份挡住意见",
+          "prompt": "李左车谨慎提出意见，韩信低头倾听"
+        },
+        {
+          "heading": "从谦辞进入实质建议",
+          "prompt": "两人共同对着地图商讨新的军事安排"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c29/cover-desktop.webp",
+        "mobile": "docs/art/hd/c29/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c29/scene-01.webp",
+          "docs/art/hd/c29/scene-02.webp",
+          "docs/art/hd/c29/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    },
+    {
+      "id": "c30",
+      "book": "史记",
+      "chapter": "鲁周公世家",
+      "title": "再有地位，也别轻慢来请教的人",
+      "storyKind": "史籍记载",
+      "heroPrompt": "西周周公训诫伯禽礼贤下士，西周器物朴素",
+      "storyFrames": [
+        {
+          "heading": "身份已经很尊贵",
+          "prompt": "周公在府中接待远道贤士"
+        },
+        {
+          "heading": "仍怕错过贤人",
+          "prompt": "周公用餐时起身迎接来访者"
+        },
+        {
+          "heading": "不要拿地位压人",
+          "prompt": "周公嘱咐伯禽，不可凭身份自傲"
+        }
+      ],
+      "images": {
+        "desktop": "docs/art/hd/c30/cover-desktop.webp",
+        "mobile": "docs/art/hd/c30/cover-mobile.webp",
+        "panels": [
+          "docs/art/hd/c30/scene-01.webp",
+          "docs/art/hd/c30/scene-02.webp",
+          "docs/art/hd/c30/scene-03.webp"
+        ]
+      },
+      "status": "planned"
+    }
+  ]
+}
