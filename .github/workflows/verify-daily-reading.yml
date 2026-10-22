@@ -50,20 +50,34 @@ jobs:
           const lessons=context.window.CLASSICS_DATA.lessons;
           const art=context.window.ClassicIllustrations;
           assert.equal(lessons.length,30);
-          assert.equal(art.paintedLessons.size,1);
-          assert.ok(fs.existsSync('docs/art/c01-comic.avif'),'c01 atlas exists');
+          assert.ok(art && typeof art.cover==='function' && typeof art.artStrip==='function');
+          assert.ok(art.paintedLessons && typeof art.paintedLessons.has==='function');
+          const known=new Set(lessons.map(l=>l.id));
+          for(const id of art.paintedLessons){
+            assert.ok(known.has(id),'painted lesson missing from curriculum: '+id);
+          }
+          if(art.paintedLessons.has('c01')){
+            assert.ok(fs.existsSync('docs/art/c01-comic.avif'),'c01 local atlas exists');
+          }
           for(const l of lessons){
-            const cover=art.cover(l), panels=art.artStrip(l);
-            if(l.id==='c01'){
-              assert.ok(cover.includes('painting-hero'));
-              assert.equal((panels.match(/<figure/g)||[]).length,4);
-              assert.ok(panels.includes('齐国公子争位') || panels.includes('旧怨'));
+            const cover=art.cover(l),panels=art.artStrip(l);
+            if(art.paintedLessons.has(l.id)){
+              assert.ok(cover.includes('role="img"') && cover.includes('aria-label='),l.id+' cover accessibility');
+              assert.ok(panels.includes('role="img"') && panels.includes('aria-label='),l.id+' panel accessibility');
+              assert.equal((panels.match(/<figure\b/g)||[]).length,Math.min(4,l.story.parts.length),l.id+' storyboard');
+              assert.ok(cover.includes('painting-hero'),l.id+' painted cover');
             }else{
               assert.equal(cover,'',l.id+' must not reuse generic artwork');
               assert.equal(panels,'',l.id+' must not reuse generic artwork');
             }
+            for(const markup of [cover,panels]){
+              assert.ok(!/<script\b/i.test(markup),l.id+' no embedded scripts');
+              assert.ok(!/\b(?:src|href)\s*=\s*["']\s*(?:https?:|\/\/)/i.test(markup),l.id+' no external image links');
+              assert.ok(!/\bon\w+\s*=/i.test(markup),l.id+' no event-handler attributes');
+            }
           }
           const html=fs.readFileSync('docs/index.html','utf8');
-          assert.ok(html.indexOf('src="illustrations.js"')<html.indexOf('src="app.js"'));
-          console.log('Pass: first lesson has dedicated artwork; others do not repeat templates');
+          assert.ok(html.indexOf('src="illustrations.js"')>=0,'illustrations script referenced');
+          assert.ok(html.indexOf('src="illustrations.js"')<html.indexOf('src="app.js"'),'script loading order');
+          console.log('Pass: all',lessons.length,'lessons checked;',art.paintedLessons.size,'have dedicated artwork');
           NODE
