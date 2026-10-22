@@ -87,7 +87,7 @@ jobs:
             }
           }
           const html=fs.readFileSync('docs/index.html','utf8');
-          assert.ok(html.indexOf('src="illustrations.js"')>=0,'illustrations script referenced');
-          assert.ok(html.indexOf('src="illustrations.js"')<html.indexOf('src="app.js"'),'script loading order');
+          assert.ok(/src="illustrations\.js(?:\?[^" ]+)?"/.test(html),'illustrations script referenced');
+          assert.ok(html.indexOf('src="illustrations.js')<html.indexOf('src="app.js"'),'script loading order');
           console.log('Pass: all',lessons.length,'lessons checked;',art.paintedLessons.size,'have dedicated artwork');
           NODE
