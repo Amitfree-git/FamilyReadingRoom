@@ -50,3 +50,21 @@
 @media(max-width:390px){.painted-gallery .illustration-grid{grid-template-columns:minmax(0,1fr)}}
 @media print{.illustration-cover.painting-cover{aspect-ratio:16/9;break-inside:avoid}.painted-gallery .comic-frame{break-inside:avoid}}
 
+
+/* Dialogue bubbles remain accessible/selectable HTML over watercolor artwork. */
+.painting-cover .story-dialogue-hero{position:absolute;top:12px;right:12px;max-width:33%;width:320px;display:grid;gap:8px;pointer-events:none}
+.story-dialogue-bubble{display:block;position:relative;max-width:100%;color:#4a392d;font:clamp(11px,1vw,15px)/1.55 "PingFang SC","Noto Sans SC",system-ui,sans-serif;letter-spacing:.01em;padding:8px 11px;background:#fffaf1ef;border:1px solid #d7bca0;border-radius:16px;box-shadow:0 3px 12px #4c38252b;overflow-wrap:anywhere;backdrop-filter:blur(4px)}
+.story-dialogue-speaker{font-weight:800;color:#8e4b2e}
+.painting-panel{position:relative}
+.painting-panel .story-dialogue-panel{position:absolute;bottom:5px;left:6px;right:6px;pointer-events:none;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.story-dialogue-panel .story-dialogue-bubble{font-size:clamp(10px,.75vw,13px);line-height:1.45;padding:4px 8px;border-radius:10px;background:#fffaf0f2;box-shadow:0 2px 6px #3e332329;max-width:96%}
+.story-dialogue-panel .story-dialogue-bubble:nth-child(2){align-self:flex-end;background:#f0faf3ee;border-color:#a3c8b0}
+.painted-gallery .illustration-title p:after{content:" · 对白根据史籍情节改编"}
+@media(min-width:651px) and (max-width:1300px){.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.story-dialogue-panel .story-dialogue-bubble{font-size:13px}}
+@media(max-width:650px){
+  .painting-cover .story-dialogue-hero{right:7px;top:7px;width:min(48%,240px);max-width:48%;gap:4px}
+  .story-dialogue-hero .story-dialogue-bubble{padding:6px 8px;font-size:11px;line-height:1.45}
+  .painted-gallery .illustration-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .story-dialogue-panel .story-dialogue-bubble{font-size:clamp(12px,3.4vw,15px);padding:6px 9px}
+}
+@media print{.story-dialogue-bubble{background:#fffcf6!important;box-shadow:none}}
