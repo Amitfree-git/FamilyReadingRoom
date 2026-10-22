@@ -57,7 +57,15 @@ jobs:
             assert.ok(known.has(id),'painted lesson missing from curriculum: '+id);
           }
           if(art.paintedLessons.has('c01')){
-            assert.ok(fs.existsSync('docs/art/c01-comic.avif'),'c01 local atlas exists');
+            const paths=['docs/art/c01-hero-native.webp',...Array.from({length:4},(_,i)=>'docs/art/c01-scene-0'+(i+1)+'-native.webp')];
+            for(const path of paths){
+              assert.ok(fs.existsSync(path),'original WebP missing: '+path);
+              const content=fs.readFileSync(path);
+              assert.equal(content.toString('ascii',0,4),'RIFF',path+' RIFF magic');
+              assert.equal(content.toString('ascii',8,12),'WEBP',path+' WEBP magic');
+              assert.ok(content.length>40_000,path+' unexpectedly small');
+            }
+            assert.ok(fs.statSync(paths[0]).size>300_000,'hero must be real source image');
           }
           for(const l of lessons){
             const cover=art.cover(l),panels=art.artStrip(l);
@@ -66,6 +74,8 @@ jobs:
               assert.ok(panels.includes('role="img"') && panels.includes('aria-label='),l.id+' panel accessibility');
               assert.equal((panels.match(/<figure\b/g)||[]).length,Math.min(4,l.story.parts.length),l.id+' storyboard');
               assert.ok(cover.includes('painting-hero'),l.id+' painted cover');
+              assert.ok(cover.includes('c01-hero-native.webp'),l.id+' uses source-resolution hero');
+              assert.ok(panels.includes('c01-scene-04-native.webp'),l.id+' uses independent story panels');
             }else{
               assert.equal(cover,'',l.id+' must not reuse generic artwork');
               assert.equal(panels,'',l.id+' must not reuse generic artwork');
