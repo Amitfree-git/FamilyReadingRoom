@@ -76,6 +76,10 @@ jobs:
               assert.ok(cover.includes('painting-hero'),l.id+' painted cover');
               assert.ok(cover.includes('c01-hero-native.webp'),l.id+' uses source-resolution hero');
               assert.ok(panels.includes('c01-scene-04-native.webp'),l.id+' uses independent story panels');
+              assert.ok(cover.includes('story-dialogue-hero'),l.id+' has labeled hero dialogue');
+              assert.ok(panels.includes('story-dialogue-panel'),l.id+' has labeled panel dialogue');
+              assert.ok(panels.includes('管仲有治理国家的才能'),l.id+' dialogue is accurate edited text');
+              assert.ok(cover.includes('对白为故事演绎'),l.id+' distinguishes paraphrase from source quote');
             }else{
               assert.equal(cover,'',l.id+' must not reuse generic artwork');
               assert.equal(panels,'',l.id+' must not reuse generic artwork');
