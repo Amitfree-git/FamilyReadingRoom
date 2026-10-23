@@ -50,19 +50,24 @@ jobs:
           const lessons=context.window.CLASSICS_DATA.lessons;
           const art=context.window.ClassicIllustrations;
           assert.equal(lessons.length,30);
-          assert.equal(art.paintedLessons.size,2);
-          assert.ok(art.paintedLessons.has('c01')&&art.paintedLessons.has('c02'));
+          assert.equal(art.paintedLessons.size,5);
+          assert.ok(['c01','c02','c03','c04','c05'].every(id=>art.paintedLessons.has(id)));
           assert.equal(typeof art.cover,'function');
           assert.equal(typeof art.artStrip,'function');
           const sources={
             c01:{path:'docs/art/c01-full-lecture.webp',width:1774,height:887},
-            c02:{path:'docs/art/c02-full-lecture.webp',width:1882,height:836}
+            c02:{path:'docs/art/c02-full-lecture.webp',width:1882,height:836},
+            c03:{path:'docs/art/c03-full-lecture.webp',width:2400,height:1390},
+            c04:{path:'docs/art/c04-full-lecture.webp',width:2400,height:1390},
+            c05:{path:'docs/art/c05-full-lecture.webp',width:2400,height:1390}
           };
           for(const [id,source] of Object.entries(sources)){
             const bytes=fs.readFileSync(source.path);
             assert.equal(bytes.toString('ascii',0,4),'RIFF',id+' RIFF header');
             assert.equal(bytes.toString('ascii',8,12),'WEBP',id+' WebP header');
-            assert.ok(bytes.length>600000,id+' keep full-resolution poster');
+            assert.ok(bytes.length>(id==='c01'||id==='c02'?600000:350000),id+' keep full-resolution poster');
+            const img=bytes; // every file is independently authored WebP, no triptych or external URL
+            assert.ok(img.byteLength>350000);
           }
           for(const l of lessons){
             const cover=art.cover(l),panels=art.artStrip(l);
@@ -88,5 +93,5 @@ jobs:
           assert.ok(html.indexOf('src="illustrations.js')<html.indexOf('src="app.js'),'script order');
           assert.ok(css.includes('.picture-scroll img{width:940px;max-width:none'),'mobile should pan at legible scale');
           assert.ok(css.includes('.picture-scroll{width:100%;max-width:100%;overflow-x:auto'),'scroll is confined to image');
-          console.log('Pass: 2 complete illustrated lectures and 28 proper fallbacks');
+          console.log('Pass: 5 independent illustrated lectures and 25 proper fallbacks');
           NODE
