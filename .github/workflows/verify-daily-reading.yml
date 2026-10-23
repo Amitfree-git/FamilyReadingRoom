@@ -85,7 +85,7 @@ jobs:
               assert.ok(styles.includes('grid-template-columns:1fr;gap:15px'),l.id+' mobile uses readable full-width panels');
               assert.ok(styles.includes('object-fit:contain'),l.id+' image keeps original aspect ratio');
               assert.ok(panels.includes('管仲有治理国家的才能'),l.id+' dialogue is accurate edited text');
-              assert.ok(cover.includes('对白为故事演绎'),l.id+' distinguishes paraphrase from source quote');
+              assert.ok(cover.includes('对白根据故事情节改编') && cover.includes('并非古籍逐字原话'),l.id+' distinguishes paraphrase from source quote');
             }else{
               assert.equal(cover,'',l.id+' must not reuse generic artwork');
               assert.equal(panels,'',l.id+' must not reuse generic artwork');
