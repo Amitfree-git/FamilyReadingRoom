@@ -106,3 +106,26 @@
   .story-dialogue-bubble{box-shadow:none}
 }
 
+
+/* Embedded-text historical comic poster: show the image intact and let mobile readers pan. */
+.picture-lesson{margin:0 0 25px;padding:16px;background:#fffaf2;border:1px solid #e3d8c5;border-radius:12px;min-width:0}
+.picture-lesson-heading{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:0 0 14px}
+.picture-lesson-heading h2{font:24px/1.45 var(--serif);color:var(--ink);margin:0 0 4px}
+.picture-lesson-heading p{font-size:12px;line-height:1.65;color:var(--muted);margin:0}
+.picture-open-original{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;padding:9px 14px;background:#f4e9d7;border:1px solid #ddc29b;border-radius:7px;text-decoration:none;color:#80563b;font-size:12px;font-weight:700}
+.picture-open-original:hover{background:#edd9bb}
+.picture-scroll{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;border:1px solid #e7dbcc;border-radius:8px;background:#f7f0de;scrollbar-width:thin}
+.picture-scroll img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:1774/887;object-fit:contain}
+.picture-mobile-hint{display:none}
+.picture-text-note{color:#7f7667;font-size:11px;line-height:1.8;margin:12px 2px 0}
+@media(max-width:700px){
+  .picture-lesson{padding:10px;margin-bottom:18px}
+  .picture-lesson-heading{align-items:start;gap:9px}
+  .picture-lesson-heading h2{font-size:18px}
+  .picture-lesson-heading p{font-size:11px}
+  .picture-open-original{font-size:12px;padding:7px 10px}
+  .picture-scroll{touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch}
+  .picture-scroll img{width:940px;max-width:none;height:auto}
+  .picture-mobile-hint{display:block;color:#9a744c;font-size:12px;line-height:1.65;margin:9px 2px 0}
+}
+@media print{.picture-scroll{overflow:visible}.picture-scroll img{width:100%;max-width:100%}.picture-open-original,.picture-mobile-hint{display:none}}

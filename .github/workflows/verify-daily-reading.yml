@@ -40,7 +40,7 @@ jobs:
           assert.ok(html.includes('每日一段'));
           console.log('Validated',data.lessons.length,'daily passages');
           NODE
-      - name: Check scene-specific watercolor illustrations
+      - name: Check integrated comic poster and fallback accessibility
         run: |
           node <<'NODE'
           const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
@@ -50,54 +50,36 @@ jobs:
           const lessons=context.window.CLASSICS_DATA.lessons;
           const art=context.window.ClassicIllustrations;
           assert.equal(lessons.length,30);
-          assert.ok(art && typeof art.cover==='function' && typeof art.artStrip==='function');
-          assert.ok(art.paintedLessons && typeof art.paintedLessons.has==='function');
-          const known=new Set(lessons.map(l=>l.id));
-          for(const id of art.paintedLessons){
-            assert.ok(known.has(id),'painted lesson missing from curriculum: '+id);
-          }
-          if(art.paintedLessons.has('c01')){
-            const paths=['docs/art/c01-hero-native.webp',...Array.from({length:4},(_,i)=>'docs/art/c01-scene-0'+(i+1)+'-native.webp')];
-            for(const path of paths){
-              assert.ok(fs.existsSync(path),'original WebP missing: '+path);
-              const content=fs.readFileSync(path);
-              assert.equal(content.toString('ascii',0,4),'RIFF',path+' RIFF magic');
-              assert.equal(content.toString('ascii',8,12),'WEBP',path+' WEBP magic');
-              assert.ok(content.length>40_000,path+' unexpectedly small');
-            }
-            assert.ok(fs.statSync(paths[0]).size>300_000,'hero must be real source image');
-          }
+          assert.equal(art.paintedLessons.size,1);
+          assert.ok(art.paintedLessons.has('c01'));
+          assert.equal(typeof art.cover,'function');
+          assert.equal(typeof art.artStrip,'function');
+          const path='docs/art/c01-full-lecture.webp',bytes=fs.readFileSync(path);
+          assert.equal(bytes.toString('ascii',0,4),'RIFF');
+          assert.equal(bytes.toString('ascii',8,12),'WEBP');
+          assert.ok(bytes.length>600000,'keep detailed full-resolution poster');
           for(const l of lessons){
             const cover=art.cover(l),panels=art.artStrip(l);
-            if(art.paintedLessons.has(l.id)){
-              assert.ok(cover.includes('role="img"') && cover.includes('aria-label='),l.id+' cover accessibility');
-              assert.ok(panels.includes('role="img"') && panels.includes('aria-label='),l.id+' panel accessibility');
-              assert.equal((panels.match(/<figure\b/g)||[]).length,Math.min(4,l.story.parts.length),l.id+' storyboard');
-              assert.ok(cover.includes('painting-hero'),l.id+' painted cover');
-              assert.ok(cover.includes('c01-hero-native.webp'),l.id+' uses source-resolution hero');
-              assert.ok(panels.includes('c01-scene-04-native.webp'),l.id+' uses independent story panels');
-              assert.ok(cover.includes('story-dialogue-hero'),l.id+' has labeled hero dialogue');
-              assert.ok(panels.includes('story-dialogue-panel'),l.id+' has labeled panel dialogue');
-              assert.ok(panels.includes('</div><figcaption class="painting-caption">'),l.id+' image closes before captions and dialogue');
-              assert.ok(cover.includes('<figcaption class="painting-cover-notes">'),l.id+' hero dialogue is in caption');
-              const styles=fs.readFileSync('docs/styles.css','utf8');
-              assert.ok(styles.includes('.painted-gallery .story-dialogue-panel{display:flex;position:static'),l.id+' panel dialogue not over image');
-              assert.ok(styles.includes('grid-template-columns:1fr;gap:15px'),l.id+' mobile uses readable full-width panels');
-              assert.ok(styles.includes('object-fit:contain'),l.id+' image keeps original aspect ratio');
-              assert.ok(panels.includes('管仲有治理国家的才能'),l.id+' dialogue is accurate edited text');
-              assert.ok(cover.includes('对白根据故事情节改编') && cover.includes('并非古籍逐字原话'),l.id+' distinguishes paraphrase from source quote');
-            }else{
-              assert.equal(cover,'',l.id+' must not reuse generic artwork');
-              assert.equal(panels,'',l.id+' must not reuse generic artwork');
+            if(l.id==='c01'){
+              assert.ok(cover.includes('src="art/c01-full-lecture.webp"'),'poster source');
+              assert.ok(cover.includes('width="1774" height="887"'),'original image dimensions');
+              assert.ok(cover.includes('查看原图'),'zoom link available');
+              assert.ok(cover.includes('role="region"')&&cover.includes('alt='),'accessible artwork');
+              assert.ok(cover.includes('文字误差'),'AI-text disclaimer');
+              assert.equal(panels,'','do not duplicate text overlays on existing poster');
+            } else {
+              assert.equal(cover,'',l.id+' must have no reused art');
+              assert.equal(panels,'',l.id+' must have no reused art');
             }
-            for(const markup of [cover,panels]){
-              assert.ok(!/<script\b/i.test(markup),l.id+' no embedded scripts');
-              assert.ok(!/\b(?:src|href)\s*=\s*["']\s*(?:https?:|\/\/)/i.test(markup),l.id+' no external image links');
-              assert.ok(!/\bon\w+\s*=/i.test(markup),l.id+' no event-handler attributes');
-            }
+            assert.ok(!/<script\b/i.test(cover),l.id+' embedded scripts');
+            assert.ok(!/\bon\w+\s*=/i.test(cover),l.id+' no injected handlers');
           }
+          const app=fs.readFileSync('docs/app.js','utf8');
           const html=fs.readFileSync('docs/index.html','utf8');
-          assert.ok(/src="illustrations\.js(?:\?[^" ]+)?"/.test(html),'illustrations script referenced');
-          assert.ok(html.indexOf('src="illustrations.js')<html.indexOf('src="app.js"'),'script loading order');
-          console.log('Pass: all',lessons.length,'lessons checked;',art.paintedLessons.size,'have dedicated artwork');
+          const css=fs.readFileSync('docs/styles.css','utf8');
+          assert.ok(app.includes("cover(l):''}<div class=\"layout\""),'poster must be full-width before lesson two-column layout');
+          assert.ok(html.indexOf('src="illustrations.js')<html.indexOf('src="app.js'),'script order');
+          assert.ok(css.includes('.picture-scroll img{width:940px;max-width:none'),'mobile should pan at legible scale');
+          assert.ok(css.includes('.picture-scroll{width:100%;max-width:100%;overflow-x:auto'),'scroll is confined to image');
+          console.log('Pass: source-resolution illustrated lecture and 29 proper fallbacks');
           NODE
