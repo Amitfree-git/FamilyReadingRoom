@@ -129,3 +129,6 @@
   .picture-mobile-hint{display:block;color:#9a744c;font-size:12px;line-height:1.65;margin:9px 2px 0}
 }
 @media print{.picture-scroll{overflow:visible}.picture-scroll img{width:100%;max-width:100%}.picture-open-original,.picture-mobile-hint{display:none}}
+
+/* Per-lesson source aspect ratios must be honored; do not force the c01 poster ratio onto other stories. */
+.picture-scroll img{aspect-ratio:auto;object-fit:contain}

@@ -50,26 +50,33 @@ jobs:
           const lessons=context.window.CLASSICS_DATA.lessons;
           const art=context.window.ClassicIllustrations;
           assert.equal(lessons.length,30);
-          assert.equal(art.paintedLessons.size,1);
-          assert.ok(art.paintedLessons.has('c01'));
+          assert.equal(art.paintedLessons.size,2);
+          assert.ok(art.paintedLessons.has('c01')&&art.paintedLessons.has('c02'));
           assert.equal(typeof art.cover,'function');
           assert.equal(typeof art.artStrip,'function');
-          const path='docs/art/c01-full-lecture.webp',bytes=fs.readFileSync(path);
-          assert.equal(bytes.toString('ascii',0,4),'RIFF');
-          assert.equal(bytes.toString('ascii',8,12),'WEBP');
-          assert.ok(bytes.length>600000,'keep detailed full-resolution poster');
+          const sources={
+            c01:{path:'docs/art/c01-full-lecture.webp',width:1774,height:887},
+            c02:{path:'docs/art/c02-full-lecture.webp',width:1882,height:836}
+          };
+          for(const [id,source] of Object.entries(sources)){
+            const bytes=fs.readFileSync(source.path);
+            assert.equal(bytes.toString('ascii',0,4),'RIFF',id+' RIFF header');
+            assert.equal(bytes.toString('ascii',8,12),'WEBP',id+' WebP header');
+            assert.ok(bytes.length>600000,id+' keep full-resolution poster');
+          }
           for(const l of lessons){
             const cover=art.cover(l),panels=art.artStrip(l);
-            if(l.id==='c01'){
-              assert.ok(cover.includes('src="art/c01-full-lecture.webp"'),'poster source');
-              assert.ok(cover.includes('width="1774" height="887"'),'original image dimensions');
-              assert.ok(cover.includes('查看原图'),'zoom link available');
-              assert.ok(cover.includes('role="region"')&&cover.includes('alt='),'accessible artwork');
-              assert.ok(cover.includes('文字误差'),'AI-text disclaimer');
-              assert.equal(panels,'','do not duplicate text overlays on existing poster');
-            } else {
-              assert.equal(cover,'',l.id+' must have no reused art');
-              assert.equal(panels,'',l.id+' must have no reused art');
+            const poster=sources[l.id];
+            if(poster){
+              assert.ok(cover.includes('src="art/'+l.id+'-full-lecture.webp"'),l.id+' poster source');
+              assert.ok(cover.includes('width="'+poster.width+'" height="'+poster.height+'"'),l.id+' native dimensions');
+              assert.ok(cover.includes('查看原图'),l.id+' zoom link');
+              assert.ok(cover.includes('role="region"')&&cover.includes('alt='),l.id+' accessible artwork');
+              assert.ok(cover.includes('文字误差'),l.id+' AI-text disclaimer');
+              assert.equal(panels,'',l.id+' no duplicated comic panels');
+            }else{
+              assert.equal(cover,'',l.id+' must not reuse another lesson poster');
+              assert.equal(panels,'',l.id+' must not reuse another lesson poster');
             }
             assert.ok(!/<script\b/i.test(cover),l.id+' embedded scripts');
             assert.ok(!/\bon\w+\s*=/i.test(cover),l.id+' no injected handlers');
@@ -81,5 +88,5 @@ jobs:
           assert.ok(html.indexOf('src="illustrations.js')<html.indexOf('src="app.js'),'script order');
           assert.ok(css.includes('.picture-scroll img{width:940px;max-width:none'),'mobile should pan at legible scale');
           assert.ok(css.includes('.picture-scroll{width:100%;max-width:100%;overflow-x:auto'),'scroll is confined to image');
-          console.log('Pass: source-resolution illustrated lecture and 29 proper fallbacks');
+          console.log('Pass: 2 complete illustrated lectures and 28 proper fallbacks');
           NODE
