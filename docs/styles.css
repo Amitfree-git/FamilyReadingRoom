@@ -37,34 +37,72 @@
 @media(max-width:390px){.illustration-grid{grid-template-columns:minmax(0,1fr)}}
 @media print{.illustration-cover{height:170px;box-shadow:none;break-inside:avoid}.comic-art{aspect-ratio:16/8}.comic-frame{break-inside:avoid}.illustration-gallery{break-inside:avoid}.art-watermark{display:none}}
 
-/* First-lesson original source-resolution artwork, independent assets. */
-.illustration-cover.painting-cover{height:auto;min-height:0;aspect-ratio:1983/793;border:1px solid #dfd3be;background:#f2eadb;overflow:hidden;position:relative;margin:0 0 16px}
-.painting-hero-img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.painting-disclaimer{position:absolute;left:12px;bottom:10px;padding:4px 8px;border-radius:4px;background:#fff9edee;font-size:10px;color:#766c5e;line-height:1.7}
-.painted-gallery .painting-panel{height:auto;aspect-ratio:450/197;background-color:#e8decb;overflow:hidden}
-.painted-gallery .painting-panel-img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.painted-gallery .painting-footer{position:static;display:block;background:transparent;color:#89796a;padding:0;margin:8px 0 0;font-size:10px}
-@media(min-width:1190px){.painted-gallery .illustration-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:650px){.illustration-cover.painting-cover{aspect-ratio:4/3}.painting-hero-img{object-position:50% center}.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.painting-disclaimer{font-size:9px}}
-@media(max-width:390px){.painted-gallery .illustration-grid{grid-template-columns:minmax(0,1fr)}}
-@media print{.illustration-cover.painting-cover{aspect-ratio:16/9;break-inside:avoid}.painted-gallery .comic-frame{break-inside:avoid}}
-
-
-/* Dialogue bubbles remain accessible/selectable HTML over watercolor artwork. */
-.painting-cover .story-dialogue-hero{position:absolute;top:12px;right:12px;max-width:33%;width:320px;display:grid;gap:8px;pointer-events:none}
-.story-dialogue-bubble{display:block;position:relative;max-width:100%;color:#4a392d;font:clamp(11px,1vw,15px)/1.55 "PingFang SC","Noto Sans SC",system-ui,sans-serif;letter-spacing:.01em;padding:8px 11px;background:#fffaf1ef;border:1px solid #d7bca0;border-radius:16px;box-shadow:0 3px 12px #4c38252b;overflow-wrap:anywhere;backdrop-filter:blur(4px)}
-.story-dialogue-speaker{font-weight:800;color:#8e4b2e}
-.painting-panel{position:relative}
-.painting-panel .story-dialogue-panel{position:absolute;bottom:5px;left:6px;right:6px;pointer-events:none;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
-.story-dialogue-panel .story-dialogue-bubble{font-size:clamp(10px,.75vw,13px);line-height:1.45;padding:4px 8px;border-radius:10px;background:#fffaf0f2;box-shadow:0 2px 6px #3e332329;max-width:96%}
-.story-dialogue-panel .story-dialogue-bubble:nth-child(2){align-self:flex-end;background:#f0faf3ee;border-color:#a3c8b0}
-.painted-gallery .illustration-title p:after{content:" · 对白根据史籍情节改编"}
-@media(min-width:651px) and (max-width:1300px){.painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.story-dialogue-panel .story-dialogue-bubble{font-size:13px}}
-@media(max-width:650px){
-  .painting-cover .story-dialogue-hero{right:7px;top:7px;width:min(48%,240px);max-width:48%;gap:4px}
-  .story-dialogue-hero .story-dialogue-bubble{padding:6px 8px;font-size:11px;line-height:1.45}
-  .painted-gallery .illustration-grid{grid-template-columns:minmax(0,1fr);gap:12px}
-  .story-dialogue-panel .story-dialogue-bubble{font-size:clamp(12px,3.4vw,15px);padding:6px 9px}
+/* v2.2: Full-bleed illustrations with dialogue BELOW, never over the paintings. */
+.illustration-cover.painting-cover{
+  display:block; height:auto; min-height:0; aspect-ratio:auto; overflow:hidden;
+  margin:0 0 20px; border:1px solid #dfd3be; border-radius:11px;
+  background:#f6f0e3; position:relative;
 }
-@media print{.story-dialogue-bubble{background:#fffcf6!important;box-shadow:none}}
+.painting-cover .painting-hero-img{
+  display:block; width:100%; height:auto; aspect-ratio:auto; object-fit:contain;
+  object-position:center; position:static;
+}
+.painting-cover-notes{display:block;position:static;margin:0;padding:14px 18px 12px;background:linear-gradient(100deg,#fcf6ec,#f1f3e9);}
+.story-dialogue-heading{display:block;font-size:12px;letter-spacing:.07em;color:#8c6b4d;font-weight:700;margin-bottom:9px}
+.story-dialogue{display:flex;gap:9px;flex-wrap:wrap;position:static;width:auto;max-width:100%;margin:0;}
+.story-dialogue-bubble{
+  display:block;position:relative;color:#4a392d;background:#fffdfa;
+  border:1px solid #dec8ac;border-radius:12px;box-shadow:none;
+  padding:9px 12px;font:14px/1.55 "PingFang SC","Noto Sans SC",system-ui,sans-serif;
+  overflow-wrap:anywhere;white-space:normal;min-width:0;max-width:100%;
+}
+.story-dialogue-speaker{font-weight:750;color:#985d3d}
+.story-dialogue-hero{display:flex;align-items:stretch;flex-wrap:wrap;}
+.story-dialogue-hero .story-dialogue-bubble{flex:1 1 230px;}
+.painting-disclaimer{position:static;display:block;background:none;box-shadow:none;padding:0;margin:10px 0 0;border:0;color:#8d7f70;font-size:11px;line-height:1.6;}
+.painted-gallery .illustration-title p:after{content:""}
+.painted-gallery .illustration-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.painted-gallery .comic-frame{min-width:0;overflow:hidden;}
+.painted-gallery .comic-art.painting-panel{
+  display:block;position:relative;height:auto;aspect-ratio:auto;
+  overflow:visible;background:#eee7d8;
+}
+.painted-gallery .painting-panel-img{
+  display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;
+  object-position:center;
+}
+.painted-gallery .painting-caption{
+  display:block;padding:11px 12px 14px;background:#fffaf3;min-height:124px;
+}
+.painted-gallery .story-heading{display:flex;align-items:baseline;gap:7px;margin-bottom:10px;line-height:1.6}
+.painted-gallery .story-heading strong{font-size:14px;font-weight:650}
+.painted-gallery .story-dialogue-panel{display:flex;position:static;flex-direction:column;gap:7px;pointer-events:auto}
+.painted-gallery .story-dialogue-panel .story-dialogue-bubble{
+  align-self:flex-start;font-size:12px;line-height:1.6;padding:7px 10px;
+  background:#fff;border-radius:11px;max-width:100%;border:1px solid #e8d8c3;
+}
+.painted-gallery .story-dialogue-panel .story-dialogue-bubble:nth-child(2){
+  align-self:flex-end;background:#f0f7f1;border-color:#d4e6d7;
+}
+.painted-gallery .painting-footer{position:static;display:block;background:none;color:#89796a;padding:0;margin:12px 0 0;font-size:11px}
+@media(min-width:651px) and (max-width:1300px){
+  .painted-gallery .illustration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .painted-gallery .story-dialogue-panel .story-dialogue-bubble{font-size:14px}
+}
+@media(max-width:650px){
+  .illustration-cover.painting-cover{aspect-ratio:auto;}
+  .painting-cover-notes{padding:12px 14px}
+  .painting-cover .painting-hero-img{width:100%;height:auto;object-fit:contain}
+  .story-dialogue-hero .story-dialogue-bubble{flex:1 1 100%;font-size:13px}
+  .painted-gallery .illustration-grid{grid-template-columns:1fr;gap:15px}
+  .painted-gallery .story-heading strong{font-size:16px}
+  .painted-gallery .painting-caption{padding:12px 14px;min-height:0}
+  .painted-gallery .story-dialogue-panel .story-dialogue-bubble{font-size:14px}
+}
+@media print{
+  .illustration-cover.painting-cover{aspect-ratio:auto;break-inside:avoid}
+  .painting-cover-notes{background:#fff}
+  .painted-gallery .comic-frame{break-inside:avoid}
+  .story-dialogue-bubble{box-shadow:none}
+}
+

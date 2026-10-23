@@ -78,6 +78,12 @@ jobs:
               assert.ok(panels.includes('c01-scene-04-native.webp'),l.id+' uses independent story panels');
               assert.ok(cover.includes('story-dialogue-hero'),l.id+' has labeled hero dialogue');
               assert.ok(panels.includes('story-dialogue-panel'),l.id+' has labeled panel dialogue');
+              assert.ok(panels.includes('</div><figcaption class="painting-caption">'),l.id+' image closes before captions and dialogue');
+              assert.ok(cover.includes('<figcaption class="painting-cover-notes">'),l.id+' hero dialogue is in caption');
+              const styles=fs.readFileSync('docs/styles.css','utf8');
+              assert.ok(styles.includes('.painted-gallery .story-dialogue-panel{display:flex;position:static'),l.id+' panel dialogue not over image');
+              assert.ok(styles.includes('grid-template-columns:1fr;gap:15px'),l.id+' mobile uses readable full-width panels');
+              assert.ok(styles.includes('object-fit:contain'),l.id+' image keeps original aspect ratio');
               assert.ok(panels.includes('管仲有治理国家的才能'),l.id+' dialogue is accurate edited text');
               assert.ok(cover.includes('对白为故事演绎'),l.id+' distinguishes paraphrase from source quote');
             }else{
