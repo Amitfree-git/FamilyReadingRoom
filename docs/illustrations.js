@@ -24,6 +24,26 @@ const POSTERS={
   c05:{
     src:"art/c05-full-lecture.webp?v=20261024-dialogue",width:1536,height:1024,title:"己所不欲，勿施于人",
     alt:"《论语·卫灵公》子贡问恕：换位思考、尊重感受的四幕图文讲义"
+  },
+  c06:{
+    src:"art/c06-full-lecture.webp?v=20261024-lessons-06-10",width:1536,height:1024,title:"徙木立信",
+    alt:"《论语·为政》人而无信：商鞅徙木、百姓疑问、兑现奖赏与建立信用的四格对话漫画"
+  },
+  c07:{
+    src:"art/c07-full-lecture.webp?v=20261024-lessons-06-10",width:1536,height:1024,title:"负荆请罪",
+    alt:"《论语·卫灵公》过而不改：廉颇与蔺相如从误解到认错、和解与行动改变的四格对话漫画"
+  },
+  c08:{
+    src:"art/c08-full-lecture.webp?v=20261024-lessons-06-10",width:1536,height:1024,title:"子夏问政",
+    alt:"《论语·子路》欲速则不达：子夏向孔子请教治理，联系认真读题的家庭学习场景"
+  },
+  c09:{
+    src:"art/c09-full-lecture.webp?v=20261024-lessons-06-10",width:1536,height:1024,title:"把关爱推及他人",
+    alt:"《孟子·梁惠王上》老吾老以及人之老：齐宣王与孟子谈推恩及关怀他人的生活实践"
+  },
+  c10:{
+    src:"art/c10-full-lecture.webp?v=20261024-lessons-06-10",width:1536,height:1024,title:"尝胆之后，更要行动",
+    alt:"《孟子·告子下》生于忧患：勾践记取失败教训、务实耕作与顺境保持警醒的四格漫画"
   }
 };
 const paintedLessons=new Set(Object.keys(POSTERS));
@@ -46,5 +66,5 @@ function artStrip(lesson){
   // Prevent duplicate small panels and second HTML speech bubble overlays.
   return "";
 }
-window.ClassicIllustrations={version:"3.4.0",paintedLessons,cover,artStrip};
+window.ClassicIllustrations={version:"3.5.0",paintedLessons,cover,artStrip};
 })();
