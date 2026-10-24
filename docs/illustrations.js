@@ -44,7 +44,12 @@ const POSTERS={
   c10:{
     src:"art/c10-full-lecture.webp?v=20261024-lessons-06-10",width:1536,height:1024,title:"尝胆之后，更要行动",
     alt:"《孟子·告子下》生于忧患：勾践记取失败教训、务实耕作与顺境保持警醒的四格漫画"
-  }
+  },
+  c11:{src:"art/c11-full-lecture.webp?v=20261024-lessons-11-15",width:1536,height:1024,title:"禹治水：观察与方法",alt:"禹治水：观察与方法：四格历史故事与人物对白"},
+  c12:{src:"art/c12-full-lecture.webp?v=20261024-lessons-11-15",width:1536,height:1024,title:"孟子见梁惠王",alt:"孟子见梁惠王：四格历史故事与人物对白"},
+  c13:{src:"art/c13-full-lecture.webp?v=20261024-lessons-11-15",width:1536,height:1024,title:"张骞远行",alt:"张骞远行：四格历史故事与人物对白"},
+  c14:{src:"art/c14-full-lecture.webp?v=20261024-lessons-11-15",width:1536,height:1024,title:"刘邦谈自己的短处",alt:"刘邦谈自己的短处：四格历史故事与人物对白"},
+  c15:{src:"art/c15-full-lecture.webp?v=20261024-lessons-11-15",width:1536,height:1024,title:"李冰治水，惠及百姓",alt:"李冰治水，惠及百姓：四格历史故事与人物对白"}
 };
 const paintedLessons=new Set(Object.keys(POSTERS));
 function clean(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
@@ -66,5 +71,5 @@ function artStrip(lesson){
   // Prevent duplicate small panels and second HTML speech bubble overlays.
   return "";
 }
-window.ClassicIllustrations={version:"3.5.0",paintedLessons,cover,artStrip};
+window.ClassicIllustrations={version:"3.6.0",paintedLessons,cover,artStrip};
 })();
