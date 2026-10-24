@@ -14,15 +14,15 @@ const POSTERS={
     alt:"《论语·学而》孔子学琴：古琴练习、反复体会、领悟琴意与学以致用的国风漫画讲义"
   },
   c03:{
-    src:"art/c03-full-lecture.webp",width:2400,height:1390,title:"两小儿辩日",
+    src:"art/c03-full-lecture.webp?v=20261024-original",width:1536,height:1024,title:"两小儿辩日",
     alt:"《论语·为政》知之为知之、不知为不知：两小儿辩日寓言、求证与承认不知的国风四幕图文讲义"
   },
   c04:{
-    src:"art/c04-full-lecture.webp",width:2400,height:1390,title:"三人行，必有我师",
-    alt:"《论语·述而》三人行必有我师：孔子认真问礼与虚心向人学习的四幕图文讲义"
+    src:"art/c04-full-lecture.webp?v=20261024-original",width:1536,height:1024,title:"三人行，必有我师",
+    alt:"《论语·述而》三人行必有我师：孔子与弟子同行、学习他人长处与反省自身不足的四幕图文讲义"
   },
   c05:{
-    src:"art/c05-full-lecture.webp",width:2400,height:1390,title:"己所不欲，勿施于人",
+    src:"art/c05-full-lecture.webp?v=20261024-original",width:1536,height:1024,title:"己所不欲，勿施于人",
     alt:"《论语·卫灵公》子贡问恕：换位思考、尊重感受的四幕图文讲义"
   }
 };
@@ -46,5 +46,5 @@ function artStrip(lesson){
   // Prevent duplicate small panels and second HTML speech bubble overlays.
   return "";
 }
-window.ClassicIllustrations={version:"3.2.0",paintedLessons,cover,artStrip};
+window.ClassicIllustrations={version:"3.3.0",paintedLessons,cover,artStrip};
 })();
